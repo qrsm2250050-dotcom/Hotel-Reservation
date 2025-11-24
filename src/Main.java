@@ -46,15 +46,38 @@ public class Main {
     static void checkOut() {
         // code here
     }
-    static double payment(double amount, String type) {
+    // payment system for bill checkout
+    static void payment(double amount) {
         Scanner kbd = new Scanner(System.in);
         do {
-            System.out.println("Input FInal Payment Amount: ");
+            System.out.println("Input Final Payment Amount: ");
             double tendered = Double.parseDouble(kbd.nextLine());
             if (amount < tendered) {
-                System.out.println("Invalid Payment received!");
+                System.out.println("Payment failed! Amount tendered less than required amount to be paid.");
             }
         } while (amount < tendered);
-        return result;
+        System.out.println("Payment: ₱"+tendered+" received.");
+        double change = tendered - amount;
+        System.out.println("Change Calculation: ₱"+tendered+" - ₱"+amount+" = ₱"+change);
+    }
+    // payment system for walk-in
+    static void payment(double amount, int day, double unitPrice) {
+        Scanner kbd = new Scanner(System.in);
+        do {
+            System.out.println("Input Payment (Room Only, ₱"+unitPrice+" * "+day+"): ");
+            double tendered = Double.parseDouble(kbd.nextLine());
+            double change = tendered - amount
+            if (amount < tendered) {
+                System.out.println("Payment failed! Amount tendered less than required amount to pay.");
+            } else {
+                System.out.println("Payment Successful!");
+                System.out.println("Change Calculation: ₱"+tendered+" - ₱"+amount+" = ₱"+change);
+            }
+        } while (amount < tendered);
+    }
+    // change calculation for general use
+    static double payment(double amount, double tendered) {
+        double change = tendered - amount;
+        return change;
     }
 }
