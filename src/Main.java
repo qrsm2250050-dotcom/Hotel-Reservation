@@ -2,6 +2,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner kbd = new Scanner(System.in);
+
         System.out.println("Welcome to the Grand Hotel System");
         while (true) {
             System.out.println("Please select an option: ");
@@ -43,8 +44,16 @@ public class Main {
     static void checkOut() {
         // code here
     }
-    static double paymentCalculation(double x) {
-        double result = 0; // placeholder code
+    static double payment(double amount, String type) {
+        Scanner kbd = new Scanner(System.in);
+        do {
+
+        }
+        System.out.println("Input FInal Payment Amount: ");
+        double tendered = Double.parseDouble(kbd.nextLine());
+        if (amount < tendered) {
+            System.out.println("Invalid Payment received!");
+        }
         return result;
     }
 }
