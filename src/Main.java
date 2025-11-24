@@ -7,7 +7,7 @@ public class Main {
         int[][] roomCatalog = {{1, 15}, {2, 10}, {3, 5}}; //1-standard 2-deluxe 3-suite
 
         //guest reservations array
-        String[][] standard = new String[15][10]; //rooms x days
+        String[][] standard = new String[15][10]; //rooms and days
         String[][] deluxe = new String[10][10];
         String[][] suite = new String[5][10];
 
