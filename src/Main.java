@@ -2,7 +2,9 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner kbd = new Scanner(System.in);
-
+        String[][] deluxe = new String[10][10]
+        String[][] standard = new String[15][10]
+        String[][] suite = new String[5][10]
         System.out.println("Welcome to the Grand Hotel System");
         while (true) {
             System.out.println("Please select an option: ");
@@ -47,13 +49,12 @@ public class Main {
     static double payment(double amount, String type) {
         Scanner kbd = new Scanner(System.in);
         do {
-
-        }
-        System.out.println("Input FInal Payment Amount: ");
-        double tendered = Double.parseDouble(kbd.nextLine());
-        if (amount < tendered) {
-            System.out.println("Invalid Payment received!");
-        }
+            System.out.println("Input FInal Payment Amount: ");
+            double tendered = Double.parseDouble(kbd.nextLine());
+            if (amount < tendered) {
+                System.out.println("Invalid Payment received!");
+            }
+        } while (amount < tendered);
         return result;
     }
 }
