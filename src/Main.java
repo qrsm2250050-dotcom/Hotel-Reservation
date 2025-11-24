@@ -46,15 +46,16 @@ public class Main {
     static void checkOut() {
         // code here
     }
-    static double payment(double amount, String type) {
+    static double paymentBill(double amount, String type) {
         Scanner kbd = new Scanner(System.in);
         do {
-            System.out.println("Input FInal Payment Amount: ");
+            System.out.println("Input Final Payment Amount: ");
             double tendered = Double.parseDouble(kbd.nextLine());
             if (amount < tendered) {
-                System.out.println("Invalid Payment received!");
+                System.out.println("Invalid payment received! Please try again");
             }
         } while (amount < tendered);
+        System.out.println("Payment: ");
         return result;
     }
 }
