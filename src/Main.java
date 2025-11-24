@@ -2,9 +2,20 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner kbd = new Scanner(System.in);
-        String[][] deluxe = new String[10][10]
-        String[][] standard = new String[15][10]
-        String[][] suite = new String[5][10]
+
+        //room type and catalog array(?)
+        int[][] roomCatalog = {{1, 15}, {2, 10}, {3, 5}}; //1-standard 2-deluxe 3-suite
+
+        //guest reservations array
+        String[][] standard = new String[15][10]; //rooms x days
+        String[][] deluxe = new String[10][10];
+        String[][] suite = new String[5][10];
+
+        //initialize all rooms as Available
+        initializeRooms(standard);
+        initializeRooms(deluxe);
+        initializeRooms(suite);
+
         System.out.println("Welcome to the Grand Hotel System");
         while (true) {
             System.out.println("Please select an option: ");
@@ -16,7 +27,7 @@ public class Main {
             int choice = Integer.parseInt(kbd.nextLine());
             switch (choice) {
                 case 1 -> {
-                    checkRoomAvailability();
+                    checkRoomAvailability(kbd, standard, deluxe, suite);
                 }
                 case 2 -> {
                     newReservation();
@@ -34,8 +45,69 @@ public class Main {
         }
     }
     // all methods are in void type. replace if necessary. ~rav
-    static void checkRoomAvailability() {
-        //
+
+    //initialize all rooms as available
+    static void initializeRooms(String[][] rooms) {
+        for (int i = 0; i < rooms.length; i++) {
+            for (int j = 0; j < rooms[i].length; j++) {
+                rooms[i][j] = "Available";
+            }
+        }
+    }
+
+    //check room availability
+    static void checkRoomAvailability(Scanner kbd, String[][] standard, String[][] deluxe, String[][] suite) {
+        System.out.print("Input Guest Name: ");
+        String name = kbd.nextLine();
+        System.out.print("Input Room Type: (1. Standard, 2. Deluxe, 3. Suite): ");
+        int type = Integer.parseInt(kbd.nextLine());
+        System.out.println("Room Availability Status");
+
+        int available;
+        switch (type) {
+            case 1:
+                available = countAvailable(standard); //count available rooms
+                System.out.println("Room Type: Standard");
+                System.out.println("Total Rooms: 15");
+                System.out.println("Available Rooms: " + available);
+                System.out.println("Price per Night: ₱2,500");
+                //print table
+                break;
+            case 2:
+                available = countAvailable(deluxe); //count available rooms
+                System.out.println("Room Type: Deluxe");
+                System.out.println("Total Rooms: 10");
+                System.out.println("Available Rooms: " + available);
+                System.out.println("Price per Night: ₱4,000");
+                //print table
+                break;
+            case 3:
+                available = countAvailable(suite); //count available rooms
+                System.out.println("Room Type: Suite");
+                System.out.println("Total Rooms: 5");
+                System.out.println("Available Rooms: " + available);
+                System.out.println("Price per Night: ₱7,500");
+                //print table
+                break;
+            default:
+                System.out.println("Invalid choice! Please try again.");
+        }
+    }
+
+    //count available rooms
+    static int countAvailable(String[][] rooms) {
+        int count = 0;
+        for (int i = 0; i < rooms.length; i++) { //rooms
+            boolean roomAvailable = false;
+            for (int j = 0; j < rooms[i].length; j++) { //days
+                if (rooms[i][j].equals("Available")) {
+                    roomAvailable = true;
+                    break;
+                }
+            }
+            if (roomAvailable) count++;
+        }
+        return count;
     }
     static void newReservation() {
         // code here
