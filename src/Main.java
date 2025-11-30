@@ -121,9 +121,10 @@ public class Main {
     // payment system for bill checkout
     static void payment(double amount) {
         Scanner kbd = new Scanner(System.in);
+        double tendered;
         do {
             System.out.println("Input Final Payment Amount: ");
-            double tendered = Double.parseDouble(kbd.nextLine());
+            tendered = Double.parseDouble(kbd.nextLine());
             if (amount < tendered) {
                 System.out.println("Payment failed! Amount tendered less than required amount to be paid.");
             }
@@ -135,10 +136,11 @@ public class Main {
     // payment system for walk-in
     static void payment(double amount, int day, double unitPrice) {
         Scanner kbd = new Scanner(System.in);
+        double tendered;
         do {
             System.out.println("Input Payment (Room Only, ₱"+unitPrice+" * "+day+"): ");
-            double tendered = Double.parseDouble(kbd.nextLine());
-            double change = tendered - amount
+            tendered = Double.parseDouble(kbd.nextLine());
+            double change = tendered - amount;
             if (amount < tendered) {
                 System.out.println("Payment failed! Amount tendered less than required amount to pay.");
             } else {
