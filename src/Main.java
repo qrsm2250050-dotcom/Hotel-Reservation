@@ -138,10 +138,82 @@ public class Main {
         // code here
     }
     static void checkOut() {
-        // code here
+            // Print Bill
+            // Check Room Number
+            // Check If Paid
+            // Print Bill
+            Scanner kbd = new Scanner(System.in);
+            String roomPrint;
+            int roomDays, validation;
+            //room name for type and number, then days for calculations, and validations
+            //guidelines say I only need to input room number, I need to grab days from either check-in/reserve or availability
+            System.out.println("Please type your room name and days checked in.");
+            System.out.print("Room Name : ");
+            do {
+                roomPrint = kbd.nextLine();
+                validation = roomPrint.length();
+                if (validation > 4) {
+                    System.out.println("Invalid room number, please try again.");
+                }
+            } while (validation > 4);
+            System.out.print("Days Checked In : ");
+            do {
+                roomDays = Integer.parseInt(kbd.nextLine());
+                if (roomDays > 10) {
+                    System.out.println("Invalid days checked in, please try again.");
+                }
+            } while (roomDays > 10);
+            //Call method, and split returned array into subtotal, tax, total, and room number
+            double[] billPrint = billCalc(roomPrint, roomDays);
+            double stotal = billPrint[0];
+            double taxCost = billPrint[1];
+            double amount = billPrint[2];
+            int rmNum = (int) billPrint[3];
+            //Call payment method, convert returned values into tendered and change
+            double[] paymentCalc = payment(amount);
+            double tendered = paymentCalc[1];
+            double change = paymentCalc[0];
+            System.out.println("Your bill is \n" +
+                        "Subtotal : " + stotal + "\n" +
+                        "Service Fee : ₱250 \n" +
+                        "Taxes : " + taxCost + "\n" +
+                        "Total Amount Due : " + billPrint + "\n" +
+                        "Amount Paid : " + tendered + "\n" +
+                        "Change Due : " + change);
+            System.out.println("Check-Out Complete. Room Number "+rmNum+" is now available.");
+        }
+
+        static double[] billCalc(String rPrt, int rDays){
+            // Billing Calculations
+            // Check Room Type and Days
+            // Add Serv
+            int roomNum = Integer.parseInt(rPrt);
+            char roomType = rPrt.toUpperCase().charAt(0);
+            double subTot = 0.00;
+            // Check room type and days, calc subTotal
+            switch (roomType) {
+                case 'S' : subTot = 2500.00*rDays;
+                break;
+                case 'D' : subTot = 4000.00*rDays;
+                break;
+                case 'T' : subTot = 8000.00*rDays;
+                break;
+                default :
+            }
+            //calc tax, then combine subtot with tax for final amount
+            double taxBill = (subTot+250.00)*0.1;
+            double fullBill = (subTot+250.00)+taxBill;
+            //compile double variables into array and return array
+            double[] listBill = new double[4];
+            listBill[0] = subTot;
+            listBill[1] = taxBill;
+            listBill[2] = fullBill;
+            listBill[3] = roomNum;
+            return listBill;
     }
     // payment system for bill checkout
-    static void payment(double amount) {
+    static double[] payment(double amount) {
+        //Turned into array so I can get both payment and change
         Scanner kbd = new Scanner(System.in);
         double tendered;
         do {
@@ -154,6 +226,10 @@ public class Main {
         System.out.println("Payment: ₱"+tendered+" received.");
         double change = tendered - amount;
         System.out.println("Change Calculation: ₱"+tendered+" - ₱"+amount+" = ₱"+change);
+        double[] paid = new double[2];
+        paid[0] = change;
+        paid[1] = tendered;
+        return paid;
     }
     // payment system for walk-in
     static void payment(double amount, int day, double unitPrice) {
