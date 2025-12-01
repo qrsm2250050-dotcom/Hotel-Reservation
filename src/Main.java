@@ -147,20 +147,24 @@ public class Main {
         String[] data = new String[5];
         String ChosenRoom = "";
         String typenumd = "";
+        String[] roominfo;
         switch (RoomType){//set roomprice based on type already
             case 1:
                 WordRoomType = "Standard";
                 ChosenRoom = walkIn2(standard, unitPrice, WordRoomType);
                 data [0] = "Standard";
+                roominfo= ChosenRoom.split("#");
                 return data;
             case 2:
                 WordRoomType = "Deluxe";
                 ChosenRoom = walkIn2(deluxe, unitPrice, WordRoomType);
                 data [0] = "Deluxe";
+                roominfo= ChosenRoom.split("#");
                 return data;
             case 3:
                 WordRoomType = "Suite";
                 ChosenRoom = walkIn2(suite, unitPrice, WordRoomType);
+                roominfo= ChosenRoom.split("#");
                 data [0] = "Suite";
                 return data;
             default:
@@ -189,9 +193,9 @@ public class Main {
                     newstreak = false;
                     streaknewval++;
                     if (streaknewval >= days) {
-                        terminate = true;
+                        //1st one is room number, 2nd one is which day you start, 3rd one is for how many days
                         ChosenRoom = String.valueOf(i) + "#" + String.valueOf(startnewlocation) + "#" + days;
-                        break;
+                        return ChosenRoom;
                     }
                 }
                 if (checker[i][j].equals("Booked")) { //checks if room is available in this particular day
@@ -201,12 +205,9 @@ public class Main {
                     }
                 }
             }
-            if (terminate) {
-                System.out.println("Ok should end the checking process now");
-                break; //end checking for viable rooms
-            }
+
         }
-        return "2";
+        return "0#0#0";
     }
     static void checkOut() {
             // Print Bill
