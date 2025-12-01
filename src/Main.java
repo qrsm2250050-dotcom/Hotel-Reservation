@@ -57,8 +57,6 @@ public class Main {
 
     //check room availability
     static void checkRoomAvailability(Scanner kbd, String[][] standard, String[][] deluxe, String[][] suite) {
-        System.out.print("Input Guest Name: ");
-        String name = kbd.nextLine();
         System.out.print("Input Room Type: (1. Standard, 2. Deluxe, 3. Suite): ");
         int type = Integer.parseInt(kbd.nextLine());
         System.out.println();
