@@ -35,7 +35,52 @@ public class Main {
                 case 3 -> {
                     String[] data = new String[5];
                     data = walkIn(standard, deluxe, suite);
+                    int days = Integer.parseInt(data [3]);
+                    int type = 0;
+                    int unitPrice = 0;
                     //i have absolutely NO idea how to store name btw
+                    //data 0 is type 1 is number 2 is day 3 is duration
+                    System.out.print("Input Guest Name: ");
+                    String name = kbd.nextLine();
+                    switch (data[0].charAt(0)){
+                        case 'T'://standard
+                            unitPrice = 2500;
+                            do {
+                                standard[Integer.parseInt(data[1])][Integer.parseInt(data[2])] = "Occupied";
+                                data[3] = String.valueOf(Integer.parseInt(data[3]) - 1);
+                                data[2] = String.valueOf(Integer.parseInt(data[2]) + 1);
+                            }while(Integer.parseInt(data[3]) > 0);
+                            break;
+                        case 'D'://deluxe
+                            unitPrice = 4000;
+                            do {
+                                deluxe[Integer.parseInt(data[1])][Integer.parseInt(data[2])] = "Occupied";
+                                data[3] = String.valueOf(Integer.parseInt(data[3]) - 1);
+                                data[2] = String.valueOf(Integer.parseInt(data[2]) + 1);
+                            }while(Integer.parseInt(data[3]) > 0);
+                            break;
+                        case 'S'://suite
+                            unitPrice = 8000;
+                            do {
+                                suite[Integer.parseInt(data[1])][Integer.parseInt(data[2])] = "Occupied";
+                                data[3] = String.valueOf(Integer.parseInt(data[3]) - 1);
+                                data[2] = String.valueOf(Integer.parseInt(data[2]) + 1);
+                                break;
+                            }while(Integer.parseInt(data[3]) > 0);
+                    }
+                    double amount = days * unitPrice;
+                    double tendered = 0;
+                    do {
+                        System.out.println("Input Final Payment Amount ("+ unitPrice + " * " + days + " = " + amount + "): ");
+                        tendered = Double.parseDouble(kbd.nextLine());
+                        if (amount < tendered) {
+                            System.out.println("Not Enough Paid.");
+                        }
+                    } while (amount < tendered);
+                    double change = tendered - amount;
+                    System.out.println("Payment Successful");
+                    System.out.println("Change: " + change);
+                    System.out.println("Update Status Room " + data[0].charAt(0) + data[1] + " is now set to Occupied by " + name + " for " + days + "day(s)");
                 }
                 case 4 -> {
                     checkOut();
@@ -59,8 +104,7 @@ public class Main {
 
     //check room availability
     static void checkRoomAvailability(Scanner kbd, String[][] standard, String[][] deluxe, String[][] suite) {
-        System.out.print("Input Guest Name: ");
-        String name = kbd.nextLine();
+
         System.out.print("Input Room Type: (1. Standard, 2. Deluxe, 3. Suite): ");
         int type = Integer.parseInt(kbd.nextLine());
         System.out.println();
@@ -144,27 +188,36 @@ public class Main {
         int RoomType = Integer.parseInt(kbd.nextLine());
         double unitPrice = 0;
         String WordRoomType = "";
-        String[] data = new String[5];
+        //data 0 is type 1 is number 2 is day 3 is duration
+        String[] data = new String[4];
         String ChosenRoom = "";
-        String typenumd = "";
         String[] roominfo;
         switch (RoomType){//set roomprice based on type already
             case 1:
                 WordRoomType = "Standard";
                 ChosenRoom = walkIn2(standard, unitPrice, WordRoomType);
-                data [0] = "Standard";
+                data [0] = "Tandard";
                 roominfo= ChosenRoom.split("#");
+                data [1] = roominfo[0];
+                data [2] = roominfo[1];
+                data [3] = roominfo[2];
                 return data;
             case 2:
                 WordRoomType = "Deluxe";
                 ChosenRoom = walkIn2(deluxe, unitPrice, WordRoomType);
                 data [0] = "Deluxe";
                 roominfo= ChosenRoom.split("#");
+                data [1] = roominfo[0];
+                data [2] = roominfo[1];
+                data [3] = roominfo[2];
                 return data;
             case 3:
                 WordRoomType = "Suite";
                 ChosenRoom = walkIn2(suite, unitPrice, WordRoomType);
                 roominfo= ChosenRoom.split("#");
+                data [1] = roominfo[0];
+                data [2] = roominfo[1];
+                data [3] = roominfo[2];
                 data [0] = "Suite";
                 return data;
             default:
@@ -207,6 +260,7 @@ public class Main {
             }
 
         }
+        System.out.println("NO AVAILABLE ROOMS");
         return "0#0#0";
     }
     static void checkOut() {
