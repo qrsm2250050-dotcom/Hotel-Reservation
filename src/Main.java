@@ -33,7 +33,9 @@ public class Main {
                     newReservation();
                 }
                 case 3 -> {
-                    walkIn();
+                    String[] data = new String[5];
+                    data = walkIn(standard, deluxe, suite);
+                    //i have absolutely NO idea how to store name btw
                 }
                 case 4 -> {
                     checkOut();
