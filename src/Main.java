@@ -419,7 +419,7 @@ public class Main {
             }
         } while (validation > 4);
         String guestName = guestnamechecker(roomPrint);
-        roomDays = daystayedcounter(roomPrint);
+        roomDays = DayStayedCounter(roomPrint);
         //Call method, and split returned array into subtotal, tax, total, and room number
         double[] billPrint = billCalc(roomPrint, roomDays);
         double stotal = billPrint[0];
@@ -518,13 +518,13 @@ public class Main {
         double change = tendered - amount;
         return change;
     }
-    static int daystayedcounter(String roomtype){
-        String roomnum = roomtype.substring(1);
-        int roomnumInt = Integer.parseInt(roomnum) - 101;
+    static int DayStayedCounter(String RoomType){
+        String RoomNum = RoomType.substring(1);
+        int roomnumInt = Integer.parseInt(RoomNum) - 101;
         String savnam = "";
         int i = -1;
         int counter = 0;
-        switch(roomtype.charAt(0)) {
+        switch(RoomType.charAt(0)) {
             case 'S' :
             do {
                 i++;
