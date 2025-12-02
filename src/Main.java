@@ -397,7 +397,8 @@ public class Main {
             if (tendered < amount){
                 System.out.println("Invalid Input");
             }
-        }while(tendered != amount);
+        }while(tendered < amount);
+        double change = tendered - amount;
         System.out.println("Payment Successful");
         int roomnum = 101 + Integer.parseInt(data[1]);
         System.out.println("Update Status Room " + data[0].charAt(0) + roomnum + " is now set to Occupied by " + name + " for " + days + "day(s)");
