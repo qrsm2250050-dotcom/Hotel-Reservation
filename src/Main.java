@@ -273,48 +273,47 @@ public class Main {
         System.out.println();
     }
     static void walkIn1() {
-        String[] data = new String[5];
+        String[] Data = new String[5];
         System.out.print("Input Guest Name:");
         String name = kbd.nextLine();
-        data = walkIn2(standard, deluxe, suite);
-        int days = Integer.parseInt(data[2]);
-        int type = 0;
-        int unitPrice = 0;
-        int slot = 0;
-        //data 0 is type 1 is number 2 is duration
-        switch (data[0].charAt(0)){
+        Data = walkIn2(standard, deluxe, suite);
+        int Days = Integer.parseInt(Data[2]);
+        int UnitPrice = 0;
+        int Slot = 0;
+        //Data 0 is type 1 is number 2 is duration
+        switch (Data[0].charAt(0)){
             case 'S'://standard
-                unitPrice = 2500;
+                UnitPrice = 2500;
                 do {
-                    standnamdur [Integer.parseInt(data[1])][slot] = name;
-                    standard[Integer.parseInt(data[1])][slot] = "Occupied";
-                    slot++;
-                }while(slot < days);
-                data [2] = String.valueOf(Integer.parseInt(data[2]) + 1);
+                    standnamdur [Integer.parseInt(Data[1])][Slot] = name;
+                    standard[Integer.parseInt(Data[1])][Slot] = "Occupied";
+                    Slot++;
+                }while(Slot < Days);
+                Data[2] = String.valueOf(Integer.parseInt(Data[2]) + 1);
                 break;
             case 'D'://deluxe
-                unitPrice = 4000;
+                UnitPrice = 4000;
                 do {
-                    deluxnamdur [Integer.parseInt(data[1])][slot] = name;
-                    deluxe[Integer.parseInt(data[1])][slot] = "Occupied";
-                    slot++;
-                }while(slot < days);
-                data [2] = String.valueOf(Integer.parseInt(data[2]) + 1);
+                    deluxnamdur [Integer.parseInt(Data[1])][Slot] = name;
+                    deluxe[Integer.parseInt(Data[1])][Slot] = "Occupied";
+                    Slot++;
+                }while(Slot < Days);
+                Data[2] = String.valueOf(Integer.parseInt(Data[2]) + 1);
                 break;
             case 'T'://suite
-                unitPrice = 8000;
+                UnitPrice = 8000;
                 do {
-                    suitenamdur[Integer.parseInt(data[1])][slot] = name;
-                    suite[Integer.parseInt(data[1])][slot] = "Occupied";
-                    slot++;
-                }while(slot < days);
-                data [2] = String.valueOf(Integer.parseInt(data[2]) + 1);
+                    suitenamdur[Integer.parseInt(Data[1])][Slot] = name;
+                    suite[Integer.parseInt(Data[1])][Slot] = "Occupied";
+                    Slot++;
+                }while(Slot < Days);
+                Data[2] = String.valueOf(Integer.parseInt(Data[2]) + 1);
                 break;
             default:
                 System.out.println("Sorry, there are no available rooms for your chosen length of stay and room type");
                 break;
         }
-        payment(days,unitPrice);
+        payment(Days, UnitPrice);
     }
     static String[] walkIn2(String[][] standard, String[][] deluxe, String[][] suite) {
         Scanner kbd = new Scanner(System.in);
@@ -324,51 +323,51 @@ public class Main {
             RoomType = Integer.parseInt(kbd.nextLine());
             if (RoomType < 1 || RoomType > 3) {System.out.println("Invalid. Please enter 1, 2, or 3 only.");}
         }while(RoomType > 3 || RoomType < 1);
-        double unitPrice = 0;
+        double UnitPrice = 0;
         String WordRoomType = "";
-        String[] data = new String[5];
+        String[] Data = new String[5];
         String ChosenRoom = "";
-        String[] roominfo;
+        String[] RoomInfo;
         switch (RoomType) { //set roomprice based on type already
             case 1:
                 WordRoomType = "Standard";
-                ChosenRoom = walkIn3(standard, unitPrice, WordRoomType);
-                data[0] = "Standard";
-                roominfo = ChosenRoom.split("#");
-                data[1] = roominfo[0];
-                data[2] = roominfo[1];
-                return data;
+                ChosenRoom = walkIn3(standard, UnitPrice, WordRoomType);
+                Data[0] = "Standard";
+                RoomInfo = ChosenRoom.split("#");
+                Data[1] = RoomInfo[0];
+                Data[2] = RoomInfo[1];
+                return Data;
             case 2:
                 WordRoomType = "Deluxe";
-                ChosenRoom = walkIn3(deluxe, unitPrice, WordRoomType);
-                data[0] = "Deluxe";
-                roominfo = ChosenRoom.split("#");
-                data[1] = roominfo[0];
-                data[2] = roominfo[1];
-                return data;
+                ChosenRoom = walkIn3(deluxe, UnitPrice, WordRoomType);
+                Data[0] = "Deluxe";
+                RoomInfo = ChosenRoom.split("#");
+                Data[1] = RoomInfo[0];
+                Data[2] = RoomInfo[1];
+                return Data;
             case 3:
                 WordRoomType = "Suite";
-                ChosenRoom = walkIn3(suite, unitPrice, WordRoomType);
-                roominfo = ChosenRoom.split("#");
-                data[0] = "Tuite";
-                data[1] = roominfo[0];
-                data[2] = roominfo[1];
-                return data;
+                ChosenRoom = walkIn3(suite, UnitPrice, WordRoomType);
+                RoomInfo = ChosenRoom.split("#");
+                Data[0] = "Tuite";
+                Data[1] = RoomInfo[0];
+                Data[2] = RoomInfo[1];
+                return Data;
             default:
                 System.out.println("Something went wrong"); //TEMP, ALSO REMEMBER TO ADD THE ERROR LOOP
                 break;
         }
-        return data;
+        return Data;
     }
 
     static String walkIn3(String[][] checker, double unitPrice, String WordRoomType) {
         Scanner kbd = new Scanner(System.in);
         System.out.print("Input Nights Booked: ");
-        int days = 0;
+        int Days = 0;
         do {
-            days = Integer.parseInt(kbd.nextLine());
-            if (days < 1 || days > 10) {System.out.println("Please Input from 1-10 days");}
-        }while (days <= 0 || days > 10);
+            Days = Integer.parseInt(kbd.nextLine());
+            if (Days < 1 || Days > 10) {System.out.println("Please Input from 1-10 days");}
+        }while (Days <= 0 || Days > 10);
         boolean terminate = false;
         System.out.println("Processing Walk-in Check-In... Checking for available " + WordRoomType + " rooms");
         String ChosenRoom = "";
@@ -379,10 +378,10 @@ public class Main {
                 if (checker[i][j].equals("Available")) { //checks if room is available in this particular day
                     streak++;
                     System.out.println("Streak added");
-                    if (streak >= days) {
+                    if (streak >= Days) {
                         System.out.println("Enough Days found");
                         //0st one is room number 1nd one is for how many days
-                        ChosenRoom = String.valueOf(i) + "#" + String.valueOf(days);
+                        ChosenRoom = String.valueOf(i) + "#" + String.valueOf(Days);
                         return ChosenRoom;
                     }
                 }
@@ -519,8 +518,8 @@ public class Main {
     }
     static int DayStayedCounter(String RoomType){
         String RoomNum = RoomType.substring(1);
-        int roomnumInt = Integer.parseInt(RoomNum) - 101;
-        String savnam = "";
+        int RoomnumInt = Integer.parseInt(RoomNum) - 101;
+        String SavNam = "";
         int i = -1;
         int counter = 0;
         switch(RoomType.charAt(0)) {
@@ -531,17 +530,17 @@ public class Main {
                     System.out.println("Room has no occupants");
                     break;
                 }
-            } while (standnamdur[roomnumInt][i] == "Available");
-            savnam = standnamdur[roomnumInt][i];
+            } while (standnamdur[RoomnumInt][i] == "Available");
+            SavNam = standnamdur[RoomnumInt][i];
             if (i == 10){
                 break;
             }
             do {
                 i++;
                 counter++;
-                standnamdur[roomnumInt][i-1] = "Available";
-                standard[roomnumInt][i-1] = "Available";
-            } while (savnam == standnamdur[roomnumInt][i]);
+                standnamdur[RoomnumInt][i-1] = "Available";
+                standard[RoomnumInt][i-1] = "Available";
+            } while (SavNam == standnamdur[RoomnumInt][i]);
             break;
             case 'D' :
                 do {
@@ -550,17 +549,17 @@ public class Main {
                         System.out.println("Room has no occupants");
                         break;
                     } // avai, avai, john, john, avai
-                } while (deluxnamdur[roomnumInt][i] == "Available");
-                savnam = deluxnamdur[roomnumInt][i];
+                } while (deluxnamdur[RoomnumInt][i] == "Available");
+                SavNam = deluxnamdur[RoomnumInt][i];
                 if (i == 10){
                     break;
                 }
                 do {
                     i++;
                     counter++;
-                    deluxnamdur[roomnumInt][i-1] = "Available";
-                    deluxe[roomnumInt][i-1] = "Available";
-                } while (savnam == deluxnamdur[roomnumInt][i]);
+                    deluxnamdur[RoomnumInt][i-1] = "Available";
+                    deluxe[RoomnumInt][i-1] = "Available";
+                } while (SavNam == deluxnamdur[RoomnumInt][i]);
                 break;
             case 'T' :
                 do {
@@ -569,8 +568,8 @@ public class Main {
                         System.out.println("Room has no occupants");
                         break;
                     }
-                } while (suitenamdur[roomnumInt][i] == "Available");
-                savnam = suitenamdur[roomnumInt][i];
+                } while (suitenamdur[RoomnumInt][i] == "Available");
+                SavNam = suitenamdur[RoomnumInt][i];
                 if (i == 10){
                     System.out.println("Room has no occupants");
                     break;
@@ -578,9 +577,9 @@ public class Main {
                 do {
                     i++;
                     counter++;
-                    suitenamdur[roomnumInt][i-1] = "Available";
-                    suite[roomnumInt][i-1] = "Available";
-                } while (savnam == suitenamdur[roomnumInt][i]);
+                    suitenamdur[RoomnumInt][i-1] = "Available";
+                    suite[RoomnumInt][i-1] = "Available";
+                } while (SavNam == suitenamdur[RoomnumInt][i]);
                 break;
         }
         return counter;
