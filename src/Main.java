@@ -402,12 +402,9 @@ public class Main {
         for (int i = 0; i < checker.length; i++) { //loop through each room, checks each room
             int streak = 0;
             for (int j = 0; j < checker[i].length; j++) { //loop through each day, checks each day in current room
-                System.out.println("Begin if check");
                 if (checker[i][j].equals("Available")) { //checks if room is available in this particular day
                     streak++;
-                    System.out.println("Streak added");
                     if (streak >= Days) {
-                        System.out.println("Enough Days found");
                         //0st one is room number 1nd one is for how many days
                         ChosenRoom = String.valueOf(i) + "#" + String.valueOf(Days);
                         return ChosenRoom;
