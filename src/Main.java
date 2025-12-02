@@ -525,7 +525,7 @@ public class Main {
         String roomnum = roomtype.substring(1);
         int roomnumInt = Integer.parseInt(roomnum) - 101;
         String savnam = "";
-        int i = 0;
+        int i = -1;
         int counter = 0;
         switch(roomtype.charAt(0)) {
             case 'S' :
@@ -546,8 +546,6 @@ public class Main {
                 standnamdur[roomnumInt][i-1] = "Available";
                 standard[roomnumInt][i-1] = "Available";
             } while (savnam == standnamdur[roomnumInt][i]);
-            standnamdur[roomnumInt][i] = "Available";
-            standard[roomnumInt][i] = "Available";
             break;
             case 'D' :
                 do {
@@ -555,7 +553,7 @@ public class Main {
                     if (i == 10){
                         System.out.println("Room has no occupants");
                         break;
-                    }
+                    } // avai, avai, john, john, avai
                 } while (deluxnamdur[roomnumInt][i] == "Available");
                 savnam = deluxnamdur[roomnumInt][i];
                 if (i == 10){
@@ -567,8 +565,6 @@ public class Main {
                     deluxnamdur[roomnumInt][i-1] = "Available";
                     deluxe[roomnumInt][i-1] = "Available";
                 } while (savnam == deluxnamdur[roomnumInt][i]);
-                deluxnamdur[roomnumInt][i] = "Available";
-                deluxe[roomnumInt][i] = "Available";
                 break;
             case 'T' :
                 do {
@@ -589,8 +585,6 @@ public class Main {
                     suitenamdur[roomnumInt][i-1] = "Available";
                     suite[roomnumInt][i-1] = "Available";
                 } while (savnam == suitenamdur[roomnumInt][i]);
-                suitenamdur[roomnumInt][i] = "Available";
-                suite[roomnumInt][i] = "Available";
                 break;
         }
         return counter;
