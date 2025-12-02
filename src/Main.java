@@ -418,16 +418,16 @@ public class Main {
                 System.out.println("Invalid room number, please try again.");
             }
         } while (validation > 4);
+        String guestName = guestnamechecker(roomPrint);
         roomDays = daystayedcounter(roomPrint);
         //Call method, and split returned array into subtotal, tax, total, and room number
-        String guestName = guestnamechecker(roomPrint);
         double[] billPrint = billCalc(roomPrint, roomDays);
         double stotal = billPrint[0];
         double taxCost = billPrint[1];
         double amount = billPrint[2];
         int rmNum = (int) billPrint[3];
         //Call payment method, convert returned values into tendered and change
-        System.out.println("Your bill is \n" +
+        System.out.println("=== Bill === \n" +
                 "Subtotal : " + stotal + "\n" +
                 "Service Fee : ₱250 \n" +
                 "Taxes : " + taxCost + "\n" +
@@ -436,13 +436,10 @@ public class Main {
         double tendered = paymentCalc[1];
         double change = paymentCalc[0];
         System.out.println("=== Final Bill === \n" +
-                "Guest Name : "+guestName+" | Room Name : "+roomPrint+"\n" +
+                "Guest Name : " + guestName + " | Room Name : " + roomPrint + "\n" +
                 "Amount Paid : " + tendered + "\n" +
                 "Change Due : " + change);
-        System.out.println("Check-Out Complete. Room Number " + rmNum + " is now available.");
-    }
-    static void statusUpdate() {
-
+        System.out.println("Check-Out Complete. Room " + roomPrint + " is now available.");
     }
 
     static double[] billCalc(String rPrt, int rDays) {
