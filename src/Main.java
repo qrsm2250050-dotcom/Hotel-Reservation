@@ -528,8 +528,15 @@ public class Main {
             case 'S' :
             do {
                 i++;
+                if (i == 10){
+                    System.out.println("Room has no occupants");
+                    break;
+                }
             } while (standnamdur[roomnumInt][i] == "Available");
             savnam = standnamdur[roomnumInt][i];
+            if (i == 10){
+                break;
+            }
             do {
                 counter++;
                 standnamdur[roomnumInt][i-1] = "Available";
@@ -539,8 +546,15 @@ public class Main {
             case 'D' :
                 do {
                     i++;
+                    if (i == 10){
+                        System.out.println("Room has no occupants");
+                        break;
+                    }
                 } while (deluxnamdur[roomnumInt][i] == "Available");
                 savnam = deluxnamdur[roomnumInt][i];
+                if (i == 10){
+                    break;
+                }
                 do {
                     counter++;
                     deluxnamdur[roomnumInt][i-1] = "Available";
@@ -550,8 +564,16 @@ public class Main {
             case 'T' :
                 do {
                     i++;
+                    if (i == 10){
+                        System.out.println("Room has no occupants");
+                        break;
+                    }
                 } while (suitenamdur[roomnumInt][i] == "Available");
                 savnam = suitenamdur[roomnumInt][i];
+                if (i == 10){
+                    System.out.println("Room has no occupants");
+                    break;
+                }
                 do {
                     counter++;
                     suitenamdur[roomnumInt][i-1] = "Available";
