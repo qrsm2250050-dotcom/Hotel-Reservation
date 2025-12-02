@@ -253,10 +253,8 @@ public class Main {
                     }
                 }
                 if (checker[i][j].equals("Booked")) { //checks if room is available in this particular day
-                    if (streaknewval > streak){
-                        streak = streaknewval;
-                        newstreak = true;
-                    }
+                    break;//stops checking for available days for this room because someone else is occupying
+                    //starts checking next room with the break
                 }
             }
 
