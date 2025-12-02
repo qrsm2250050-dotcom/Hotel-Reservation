@@ -325,6 +325,8 @@ public class Main {
                 ChosenRoom = walkIn2(standard, unitPrice, WordRoomType);
                 data[0] = "Standard";
                 roominfo = ChosenRoom.split("#");
+                data[1] = roominfo[0];
+                data[2] = roominfo[1];
                 return data;
             case 2:
                 WordRoomType = "Deluxe";
