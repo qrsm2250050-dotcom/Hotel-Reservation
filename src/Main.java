@@ -444,14 +444,19 @@ public class Main {
                 System.out.println("Invalid room number, please try again.");
             }
         } while (validation > 4);
+        System.out.println("Running guestname");
         String guestName = guestnamechecker(roomPrint);
+        System.out.println("Running roomdays");
         roomDays = DayStayedCounter(roomPrint);
         //Call method, and split returned array into subtotal, tax, total, and room number
+        System.out.println("Finished with the methods");
         double[] billPrint = billCalc(roomPrint, roomDays);
+        System.out.println("Finished with the methods");
         double stotal = billPrint[0];
         double taxCost = billPrint[1];
         double amount = billPrint[2];
         int rmNum = (int) billPrint[3];
+        System.out.println("Values, assigned");
         //Call payment method, convert returned values into tendered and change
         System.out.println("=== Bill === \n" +
                 "Subtotal : " + stotal + "\n" +
@@ -559,7 +564,9 @@ public class Main {
                     break;
                 }
             } while (standnamdur[RoomnumInt][i] == "Available");
-            SavNam = standnamdur[RoomnumInt][i];
+                if (i != 10){
+                    SavNam = standnamdur[RoomnumInt][i];
+                }
             if (i == 10){
                 break;
             }
@@ -578,7 +585,9 @@ public class Main {
                         break;
                     } // avai, avai, john, john, avai
                 } while (deluxnamdur[RoomnumInt][i] == "Available");
-                SavNam = deluxnamdur[RoomnumInt][i];
+                if (i != 10){
+                    SavNam = deluxnamdur[RoomnumInt][i];
+                }
                 if (i == 10){
                     break;
                 }
@@ -597,7 +606,9 @@ public class Main {
                         break;
                     }
                 } while (suitenamdur[RoomnumInt][i] == "Available");
-                SavNam = suitenamdur[RoomnumInt][i];
+                if (i != 10){
+                    SavNam = suitenamdur[RoomnumInt][i];
+                }
                 if (i == 10){
                     System.out.println("Room has no occupants");
                     break;
@@ -623,20 +634,38 @@ public class Main {
             case 'S':
                 do {
                     i++;
+                    if (i == 10){
+                        System.out.println("Room has no occupants");
+                        break;
+                    }
                 } while (standnamdur[roomnumInt][i] == "Available");
-                savnam = standnamdur[roomnumInt][i];
+                if (i != 10){
+                    savnam = standnamdur[roomnumInt][i];
+                }
                 break;
             case 'D':
                 do {
                     i++;
+                    if (i == 10){
+                        System.out.println("Room has no occupants");
+                        break;
+                    }
                 } while (deluxnamdur[roomnumInt][i] == "Available");
-                savnam = deluxnamdur[roomnumInt][i];
+                if (i != 10){
+                    savnam = deluxnamdur[roomnumInt][i];
+                }
                 break;
             case 'T':
                 do {
                     i++;
+                    if (i == 10){
+                        System.out.println("Room has no occupants");
+                        break;
+                    }
                 } while (suitenamdur[roomnumInt][i] == "Available");
-                savnam = suitenamdur[roomnumInt][i];
+                if (i != 10){
+                    savnam = suitenamdur[roomnumInt][i];
+                }
                 break;
         }
         return savnam;
