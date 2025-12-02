@@ -399,7 +399,7 @@ public class Main {
         return "0#0#0";
     }
 
-        static void checkOut() {
+    static void checkOut() {
         // Print Bill
         // Check Room Number
         // Check If Paid
@@ -409,7 +409,7 @@ public class Main {
         int roomDays, validation;
         //room name for type and number, then days for calculations, and validations
         //guidelines say I only need to input room number, I need to grab days from either check-in/reserve or availability
-        System.out.println("Please type your room name and days checked in.");
+        System.out.println("Please type your room name.");
         System.out.print("Room Name : ");
         do {
             roomPrint = kbd.nextLine();
@@ -418,28 +418,31 @@ public class Main {
                 System.out.println("Invalid room number, please try again.");
             }
         } while (validation > 4);
-        System.out.print("Days Checked In : ");
-
         roomDays = daystayedcounter(roomPrint);
-
         //Call method, and split returned array into subtotal, tax, total, and room number
+        String guestName = guestnamechecker(roomPrint);
         double[] billPrint = billCalc(roomPrint, roomDays);
         double stotal = billPrint[0];
         double taxCost = billPrint[1];
         double amount = billPrint[2];
         int rmNum = (int) billPrint[3];
         //Call payment method, convert returned values into tendered and change
-        double[] paymentCalc = payment(amount);
-        double tendered = paymentCalc[1];
-        double change = paymentCalc[0];
         System.out.println("Your bill is \n" +
                 "Subtotal : " + stotal + "\n" +
                 "Service Fee : ₱250 \n" +
                 "Taxes : " + taxCost + "\n" +
-                "Total Amount Due : " + billPrint + "\n" +
+                "Total Amount Due : " + billPrint);
+        double[] paymentCalc = payment(amount);
+        double tendered = paymentCalc[1];
+        double change = paymentCalc[0];
+        System.out.println("=== Final Bill === \n" +
+                "Guest Name : "+guestName+" | Room Name : "+roomPrint+"\n" +
                 "Amount Paid : " + tendered + "\n" +
                 "Change Due : " + change);
         System.out.println("Check-Out Complete. Room Number " + rmNum + " is now available.");
+    }
+    static void statusUpdate() {
+
     }
 
     static double[] billCalc(String rPrt, int rDays) {
@@ -582,5 +585,33 @@ public class Main {
                 break;
         }
         return counter;
+    }
+    static String guestnamechecker(String roomNm) {
+        String roomnum = roomNm.substring(1);
+        int roomnumInt = Integer.parseInt(roomnum) - 101;
+        String savnam = "";
+        int i = 0;
+        int counter = 0;
+        switch(roomNm.charAt(0)) {
+            case 'S' :
+                do {
+                    i++;
+                } while (standnamdur[roomnumInt][i] == "Available");
+                savnam = standnamdur[roomnumInt][i];
+                break;
+            case 'D' :
+                do {
+                    i++;
+                } while (deluxnamdur[roomnumInt][i] == "Available");
+                savnam = deluxnamdur[roomnumInt][i];
+                break;
+            case 'T' :
+                do {
+                    i++;
+                } while (suitenamdur[roomnumInt][i] == "Available");
+                savnam = suitenamdur[roomnumInt][i];
+                break;
+        }
+        return savnam;
     }
 }
