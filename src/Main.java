@@ -85,7 +85,7 @@ public class Main {
                         if (amount > tendered) {
                             System.out.println("Not Enough Paid.");
                         }
-                    } while (amount < tendered);
+                    } while (amount > tendered);
                     double change = tendered - amount;
                     System.out.println("Payment Successful");
                     System.out.println("Change: " + change);
