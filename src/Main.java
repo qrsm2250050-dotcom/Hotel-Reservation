@@ -323,6 +323,7 @@ public class Main {
             case 1:
                 WordRoomType = "Standard";
                 ChosenRoom = walkIn2(standard, unitPrice, WordRoomType);
+                System.out.println("chooseroomdone");
                 data[0] = "Standard";
                 System.out.println("assigning to data broke works");
                 roominfo = ChosenRoom.split("#");
