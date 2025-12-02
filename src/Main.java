@@ -47,7 +47,7 @@ public class Main {
                 case 4 -> {
                     checkOut();
                 }
-                default ->{
+                default -> {
                     System.out.println("Invalid choice! Please try again.");
                 }
             }
@@ -184,7 +184,6 @@ public class Main {
                 price = 8000;
             }
             default -> {
-                System.out.println("Invalid Room Type.");
                 return;
             }
         }
@@ -203,42 +202,70 @@ public class Main {
             }
         }
 
-        System.out.println("\nProcessing Reservation...");
+        int startDay = 0;
 
-        int assignedRoomIndex = -1;
-        int startDay = -1;
+        while (true) {
+            System.out.print("\nChoose starting day (1 - 10): ");
+            startDay = Integer.parseInt(kbd.nextLine());
 
+            if (startDay < 1 || startDay > 10) {
+                System.out.println("Invalid day. Please choose between 1 and 10.");
+                continue;
+            }
 
-        for (int i = 0; i < selectedArray.length; i++) {
+            if (startDay + nights - 1 > 10) {
+                System.out.println("Not enough remaining days for a " + nights + "-night stay.");
+                continue;
+            }
 
-            for (int start = 0; start <= 10 - nights; start++) {
-                boolean free = true;
+            boolean dayPossible = false;
 
+            for (int i = 0; i < selectedArray.length; i++) {
+                boolean roomFits = true;
 
-                for (int d = 0; d < nights; d++) {
-                    if (!selectedArray[i][start + d].equals("Available")) {
-                        free = false;
+                for (int d = startDay - 1; d < (startDay - 1) + nights; d++) {
+                    if (!selectedArray[i][d].equals("Available")) {
+                        roomFits = false;
                         break;
                     }
                 }
-
-                if (free) {
-                    assignedRoomIndex = i;
-                    startDay = start + 1;
-
-                    // Print the dates
-                    for (int dayNum = 1; dayNum <= nights; dayNum++) {
-                        System.out.println("Date " + dayNum + ": Day " + (startDay + dayNum - 1));
-                    }
-
-                    // Mark as booked
-                    for (int d = 0; d < nights; d++) {
-                        selectedArray[i][start + d] = "Booked";
-                    }
+                if (roomFits) {
+                    dayPossible = true;
                     break;
                 }
             }
-            if (assignedRoomIndex != -1) break;
+
+            if (dayPossible) break;
+            else System.out.println("Those dates are not available. Choose another start day.");
+        }
+
+        System.out.println("\nDate List:");
+        for (int i = 1; i <= nights; i++) {
+            System.out.println("Date " + i + ": Day " + (startDay + i - 1));
+        }
+
+        System.out.println("\nProcessing Reservation...");
+
+        int assignedRoomIndex = -1;
+
+        for (int i = 0; i < selectedArray.length; i++) {
+            boolean free = true;
+
+            for (int d = startDay - 1; d < (startDay - 1) + nights; d++) {
+                if (!selectedArray[i][d].equals("Available")) {
+                    free = false;
+                    break;
+                }
+            }
+
+            if (free) {
+                assignedRoomIndex = i;
+
+                for (int d = startDay - 1; d < (startDay - 1) + nights; d++) {
+                    selectedArray[i][d] = "Booked";
+                }
+                break;
+            }
         }
 
         if (assignedRoomIndex == -1) {
@@ -248,22 +275,17 @@ public class Main {
 
         int roomNumber = 101 + assignedRoomIndex;
         String fullRoomName = roomPrefix + roomNumber;
+
         int fee = price * nights;
 
         System.out.println("Found: " + fullRoomName + ".");
-        System.out.println("Reservation Fee (Room Rate Only): ₱" + price + " / night * " + nights + " nights = ₱" + fee);
+        System.out.println("Reservation Fee (Room Rate Only): ₱" + price +
+                " / night * " + nights + " nights = ₱" + fee);
 
         System.out.println("\n--- Reservation Summary ---");
         System.out.println("Guest Name: " + guest);
 
-        String roomTypeName = "";
-        if (type == 1) {
-            roomTypeName = "Standard";
-        } else if (type == 2) {
-            roomTypeName = "Deluxe";
-        } else {
-            roomTypeName = "Suite";
-        }
+        String roomTypeName = (type == 1) ? "Standard" : (type == 2) ? "Deluxe" : "Suite";
         System.out.println("Room Type: " + roomTypeName);
 
         System.out.println("Room Number Assigned: " + fullRoomName);
@@ -272,6 +294,7 @@ public class Main {
         System.out.println("Update Status: Room " + fullRoomName + " is now set to 'Booked' by " + guest + ".");
         System.out.println();
     }
+
     static void walkIn1() {
         String[] Data = new String[5];
         System.out.print("Input Guest Name:");
@@ -315,13 +338,16 @@ public class Main {
         }
         payment(Days, UnitPrice);
     }
+
     static String[] walkIn2(String[][] standard, String[][] deluxe, String[][] suite) {
         Scanner kbd = new Scanner(System.in);
         int RoomType = 0;
         do {
             System.out.print("Input Room Type (1. Standard, 2. Deluxe, 3. Suite): ");
             RoomType = Integer.parseInt(kbd.nextLine());
-            if (RoomType < 1 || RoomType > 3) {System.out.println("Invalid. Please enter 1, 2, or 3 only.");}
+            if (RoomType < 1 || RoomType > 3) {
+                System.out.println("Invalid. Please enter 1, 2, or 3 only.");
+            }
         }while(RoomType > 3 || RoomType < 1);
         double UnitPrice = 0;
         String WordRoomType = "";
@@ -366,7 +392,9 @@ public class Main {
         int Days = 0;
         do {
             Days = Integer.parseInt(kbd.nextLine());
-            if (Days < 1 || Days > 10) {System.out.println("Please Input from 1-10 days");}
+            if (Days < 1 || Days > 10) {
+                System.out.println("Please Input from 1-10 days");
+            }
         }while (Days <= 0 || Days > 10);
         boolean terminate = false;
         System.out.println("Processing Walk-in Check-In... Checking for available " + WordRoomType + " rooms");
@@ -545,7 +573,7 @@ public class Main {
             case 'D' :
                 do {
                     i++;
-                    if (i == 10){
+                    if (i == 10) {
                         System.out.println("Room has no occupants");
                         break;
                     } // avai, avai, john, john, avai
@@ -561,10 +589,10 @@ public class Main {
                     deluxe[RoomnumInt][i-1] = "Available";
                 } while (SavNam == deluxnamdur[RoomnumInt][i]);
                 break;
-            case 'T' :
+            case 'T':
                 do {
                     i++;
-                    if (i == 10){
+                    if (i == 10) {
                         System.out.println("Room has no occupants");
                         break;
                     }
@@ -584,26 +612,27 @@ public class Main {
         }
         return counter;
     }
+
     static String guestnamechecker(String roomNm) {
         String roomnum = roomNm.substring(1);
         int roomnumInt = Integer.parseInt(roomnum) - 101;
         String savnam = "";
         int i = 0;
         int counter = 0;
-        switch(roomNm.charAt(0)) {
-            case 'S' :
+        switch (roomNm.charAt(0)) {
+            case 'S':
                 do {
                     i++;
                 } while (standnamdur[roomnumInt][i] == "Available");
                 savnam = standnamdur[roomnumInt][i];
                 break;
-            case 'D' :
+            case 'D':
                 do {
                     i++;
                 } while (deluxnamdur[roomnumInt][i] == "Available");
                 savnam = deluxnamdur[roomnumInt][i];
                 break;
-            case 'T' :
+            case 'T':
                 do {
                     i++;
                 } while (suitenamdur[roomnumInt][i] == "Available");
