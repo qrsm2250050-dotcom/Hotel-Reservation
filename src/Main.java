@@ -353,7 +353,7 @@ public class Main {
     }
     static void walkIn3() {
         String[] data = new String[5];
-        System.out.print("Input Guest Name: main");
+        System.out.print("Input Guest Name:");
         String name = kbd.nextLine();
         data = walkIn(standard, deluxe, suite);
         int days = Integer.parseInt(data[2]);
