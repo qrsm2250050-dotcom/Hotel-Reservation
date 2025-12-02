@@ -379,7 +379,7 @@ public class Main {
         System.out.print("Input Guest Name: main");
         String name = kbd.nextLine();
         data = walkIn(standard, deluxe, suite);
-        int days = Integer.parseInt(data[2]);
+        int days = Integer.parseInt(data [2]);
         int type = 0;
         int unitPrice = 0;
         int slot = 0;
