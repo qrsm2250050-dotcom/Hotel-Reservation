@@ -46,10 +46,12 @@ public class Main {
                         case 'T'://standard
                             unitPrice = 2500;
                             do {
-                                standard[Integer.parseInt(data[1])][Integer.parseInt(data[2])] = "Occupied";
-                                data[3] = String.valueOf(Integer.parseInt(data[3]) - 1);
-                                data[2] = String.valueOf(Integer.parseInt(data[2]) + 1);
-                            }while(Integer.parseInt(data[3]) > 0);
+                                standard[Integer.parseInt(data[1])][slot] = "Occupied";
+                                slot++;
+                            }while(slot < days);
+                            data [2] = String.valueOf(Integer.parseInt(data[2]) + 1);
+                            System.out.println("Stay done, assigning cleanup day");
+                            standard[Integer.parseInt(data[1])][days] = "Cleanup Day";
                             break;
                         case 'D'://deluxe
                             unitPrice = 4000;
