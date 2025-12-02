@@ -235,7 +235,6 @@ public class Main {
         Scanner kbd = new Scanner(System.in);
         System.out.println("Input Nights Booked: ");
         int days = Integer.parseInt(kbd.nextLine());
-        boolean terminate = false;
         System.out.println("Processing Walk-in Check-In... Checking for available " + WordRoomType + " rooms");
         String ChosenRoom = "";
         for (int i = 0; i < checker.length; i++) { //loop through each room, checks each room
