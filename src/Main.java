@@ -10,6 +10,9 @@ public class Main {
     public static String[][] standard = new String[15][10]; //rooms and days
     public static String[][] deluxe = new String[10][10];
     public static String[][] suite = new String[5][10];
+    public static String[][] standnamdur = new String[15][10];//room, name
+    public static String[][] deluxnamdur = new String[10][10];
+    public static String[][] suitenamdur = new String[5][10];
 
     public static void main(String[] args) {
 
@@ -278,7 +281,7 @@ public class Main {
         //data 0 is type 1 is number 2 is duration
         switch (data[0].charAt(0)){
             case 'S'://standard
-                System.out.println("Standard room");
+                standnamdur [Integer.parseInt(data[1])][0] = name;
                 unitPrice = 2500;
                 do {
                     standard[Integer.parseInt(data[1])][slot] = "Occupied";
@@ -287,6 +290,7 @@ public class Main {
                 data [2] = String.valueOf(Integer.parseInt(data[2]) + 1);
                 break;
             case 'D'://deluxe
+                deluxnamdur [Integer.parseInt(data[1])][0] = name;
                 unitPrice = 4000;
                 do {
                     deluxe[Integer.parseInt(data[1])][slot] = "Occupied";
@@ -295,6 +299,7 @@ public class Main {
                 data [2] = String.valueOf(Integer.parseInt(data[2]) + 1);
                 break;
             case 'T'://suite
+                suite[Integer.parseInt(data[1])][0] = name;
                 unitPrice = 8000;
                 do {
                     suite[Integer.parseInt(data[1])][slot] = "Occupied";
@@ -390,7 +395,7 @@ public class Main {
         }
         return "0#0#0";
     }
-    
+
         static void checkOut() {
         // Print Bill
         // Check Room Number
