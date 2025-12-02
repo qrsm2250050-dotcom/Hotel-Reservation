@@ -60,8 +60,6 @@ public class Main {
                                 slot++;
                             }while(slot < days);
                             data [2] = String.valueOf(Integer.parseInt(data[2]) + 1);
-                            System.out.println("Stay done, assigning cleanup day");
-                            deluxe[Integer.parseInt(data[1])][days] = "Cleanup Day";
                             break;
                         case 'S'://suite
                             unitPrice = 8000;
