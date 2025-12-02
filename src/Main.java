@@ -159,7 +159,6 @@ public class Main {
             }
         }
 
-
         String[][] selectedArray;
         String roomPrefix = "";
         int price = 0;
@@ -189,7 +188,6 @@ public class Main {
         System.out.println();
         printTable(selectedArray, roomPrefix.charAt(0));
 
-
         int nights = 0;
 
         while (nights < 1 || nights > 10) {
@@ -201,31 +199,42 @@ public class Main {
             }
         }
 
-        for (int i = 1; i <= nights; i++) {
-            System.out.println("Date " + i + ": Day " + (i + 2));
-        }
-
         System.out.println("\nProcessing Reservation...");
 
         int assignedRoomIndex = -1;
+        int startDay = -1; // Track which day the reservation starts
 
+        // Find available room and determine start day
         for (int i = 0; i < selectedArray.length; i++) {
-            boolean free = true;
+            // Check from day 1 to find earliest consecutive available days
+            for (int start = 0; start <= 10 - nights; start++) {
+                boolean free = true;
 
-            for (int d = 0; d < nights; d++) {
-                if (!selectedArray[i][d].equals("Available")) {
-                    free = false;
+                // Check if room is available for the next 'nights' days starting from 'start'
+                for (int d = 0; d < nights; d++) {
+                    if (!selectedArray[i][start + d].equals("Available")) {
+                        free = false;
+                        break;
+                    }
+                }
+
+                if (free) {
+                    assignedRoomIndex = i;
+                    startDay = start + 1; // Convert to 1-based day number (Day 1, Day 2, etc.)
+
+                    // Print the dates
+                    for (int dayNum = 1; dayNum <= nights; dayNum++) {
+                        System.out.println("Date " + dayNum + ": Day " + (startDay + dayNum - 1));
+                    }
+
+                    // Mark as booked
+                    for (int d = 0; d < nights; d++) {
+                        selectedArray[i][start + d] = "Booked";
+                    }
                     break;
                 }
             }
-
-            if (free) {
-                assignedRoomIndex = i;
-                for (int d = 0; d < nights; d++) {
-                    selectedArray[i][d] = "Booked";
-                }
-                break;
-            }
+            if (assignedRoomIndex != -1) break;
         }
 
         if (assignedRoomIndex == -1) {
@@ -235,7 +244,6 @@ public class Main {
 
         int roomNumber = 101 + assignedRoomIndex;
         String fullRoomName = roomPrefix + roomNumber;
-
         int fee = price * nights;
 
         System.out.println("Found: " + fullRoomName + ".");
