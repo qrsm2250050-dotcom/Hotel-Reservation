@@ -533,6 +533,7 @@ public class Main {
             do {
                 counter++;
                 standnamdur[roomnumInt][i-1] = "Available";
+                standard[roomnumInt][i-1] = "Available";
             } while (savnam == standnamdur[roomnumInt][i]);
             break;
             case 'D' :
@@ -543,6 +544,7 @@ public class Main {
                 do {
                     counter++;
                     deluxnamdur[roomnumInt][i-1] = "Available";
+                    deluxe[roomnumInt][i-1] = "Available";
                 } while (savnam == deluxnamdur[roomnumInt][i]);
                 break;
             case 'T' :
@@ -553,6 +555,7 @@ public class Main {
                 do {
                     counter++;
                     suitenamdur[roomnumInt][i-1] = "Available";
+                    suite[roomnumInt][i-1] = "Available";
                 } while (savnam == suitenamdur[roomnumInt][i]);
                 break;
         }
