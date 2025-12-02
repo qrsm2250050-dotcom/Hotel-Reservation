@@ -237,6 +237,7 @@ public class Main {
         int days = Integer.parseInt(kbd.nextLine());
         System.out.println("Processing Walk-in Check-In... Checking for available " + WordRoomType + " rooms");
         String ChosenRoom = "";
+        System.out.println("Chances are it breaks in the for loop");
         for (int i = 0; i < checker.length; i++) { //loop through each room, checks each room
             int streak = 0;
             int streaknewval = 0;
