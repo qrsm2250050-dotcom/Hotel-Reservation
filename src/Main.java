@@ -526,7 +526,7 @@ public class Main {
         double tendered;
         double amount = unitPrice * day;
         do {
-            System.out.println("Input Payment (Room Only, ₱" + unitPrice + " * " + day + "): ");
+            System.out.println("Input Payment (Room Only, ₱" + unitPrice + " * " + day + " = " + amount + "): ");
             tendered = Double.parseDouble(kbd.nextLine());
             double change = tendered - amount;
             if (amount > tendered) {
