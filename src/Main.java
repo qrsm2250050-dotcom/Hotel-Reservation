@@ -422,9 +422,19 @@ public class Main {
                 break;
         }
         double amount = days * unitPrice;
-        payment(amount);
-        System.out.println("Update Status Room " + data[0].charAt(0) + data[1] + " is now set to Occupied by " + name + " for " + days + "day(s)");
-        }
+        double tendered;
+        do{
+            System.out.println("Input Payment, Room Only" + unitPrice + " * " + days + " = " + amount);
+            tendered = Double.parseDouble(kbd.nextLine());
+            if (tendered != amount){
+                System.out.println("Please Pay Exact");
+            }
+        }while(tendered != amount);
+        System.out.println("Payment Successful");
+        int roomnum = 101 + Integer.parseInt(data[1]);
+        System.out.println("Update Status Room " + data[0].charAt(0) + roomnum + " is now set to Occupied by " + name + " for " + days + "day(s)");
+
+    }
         static void checkOut() {
         // Print Bill
         // Check Room Number
