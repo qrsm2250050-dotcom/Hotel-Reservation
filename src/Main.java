@@ -195,7 +195,7 @@ public class Main {
         int RoomType = Integer.parseInt(kbd.nextLine());
         double unitPrice = 0;
         String WordRoomType = "";
-        //data 0 is type 1 is number 2 is day 3 is duration
+        //data 0 is type 1 is number 2 is duration
         String[] data = new String[4];
         String ChosenRoom = "";
         String[] roominfo;
