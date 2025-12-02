@@ -1,16 +1,18 @@
 import java.util.Scanner;
 
 public class Main {
+    public static Scanner kbd = new Scanner(System.in);
+
+    //room type and catalog array(?)
+    int[][] roomCatalog = {{1, 15}, {2, 10}, {3, 5}}; //1-standard 2-deluxe 3-suite
+
+    //guest reservations array
+    public static String[][] standard = new String[15][10]; //rooms and days
+    public static String[][] deluxe = new String[10][10];
+    public static String[][] suite = new String[5][10];
+
     public static void main(String[] args) {
-        Scanner kbd = new Scanner(System.in);
 
-        //room type and catalog array(?)
-        int[][] roomCatalog = {{1, 15}, {2, 10}, {3, 5}}; //1-standard 2-deluxe 3-suite
-
-        //guest reservations array
-        String[][] standard = new String[15][10]; //rooms and days
-        String[][] deluxe = new String[10][10];
-        String[][] suite = new String[5][10];
 
         //initialize all rooms as Available
         initializeRooms(standard);
@@ -28,14 +30,14 @@ public class Main {
             int choice = Integer.parseInt(kbd.nextLine());
             switch (choice) {
                 case 1 -> {
-                    checkRoomAvailability(kbd, standard, deluxe, suite);
+                    checkRoomAvailability();
                 }
                 case 2 -> {
-                    newReservation(kbd, standard, deluxe, suite);
+                    newReservation();
                 }
                 case 3 -> {
                     String[] data = new String[5];
-                    data = walkIn(standard, deluxe, suite);
+                    data = walkIn();
                     //i have absolutely NO idea how to store name btw
                 }
                 case 4 -> {
@@ -59,7 +61,7 @@ public class Main {
     }
 
     //check room availability
-    static void checkRoomAvailability(Scanner kbd, String[][] standard, String[][] deluxe, String[][] suite) {
+    static void checkRoomAvailability() {
 
         int type = 0;
         while (type < 1 || type > 3) {
@@ -142,7 +144,7 @@ public class Main {
         return count;
     }
 
-    static void newReservation(Scanner kbd, String[][] standard, String[][] deluxe, String[][] suite) {
+    static void newReservation() {
         System.out.print("Input Guest Name: ");
         String guest = kbd.nextLine();
 
@@ -259,7 +261,7 @@ public class Main {
         System.out.println();
     }
 
-    static String[] walkIn(String[][] standard, String[][] deluxe, String[][] suite) {
+    static String[] walkIn() {
         Scanner kbd = new Scanner(System.in);
         System.out.println("Input Guest Name (Walk-In): ");//ok so the code asks to take a name but at no point do we need to actually output the name thank god
         String GuestName = kbd.nextLine();
