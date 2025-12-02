@@ -338,7 +338,7 @@ public class Main {
         switch (RoomType) { //set roomprice based on type already
             case 1:
                 WordRoomType = "Standard";
-                ChosenRoom = walkIn2(standard, unitPrice, WordRoomType);
+                ChosenRoom = walkIn3(standard, unitPrice, WordRoomType);
                 data[0] = "Standard";
                 roominfo = ChosenRoom.split("#");
                 data[1] = roominfo[0];
