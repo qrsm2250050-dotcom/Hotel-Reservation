@@ -71,7 +71,7 @@ public class Main {
                             }while(slot < days);
                             data [2] = String.valueOf(Integer.parseInt(data[2]) + 1);
                             System.out.println("Stay done, assigning cleanup day");
-                            standard[Integer.parseInt(data[1])][days] = "Cleanup Day";
+                            suite[Integer.parseInt(data[1])][days] = "Cleanup Day";
                             break;
                         default:
                             System.out.println("Sorry, there are no available rooms for your chosen length of stay and room type");
