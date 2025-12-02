@@ -320,7 +320,8 @@ public class Main {
         int roomnum = 101 + Integer.parseInt(data[1]);
         System.out.println("Update Status Room " + data[0].charAt(0) + roomnum + " is now set to Occupied by " + name + " for " + days + "day(s)");
 
-    static String[] walkIn(String[][] standard, String[][] deluxe, String[][] suite) {
+    }
+    static String[] walkIn2(String[][] standard, String[][] deluxe, String[][] suite) {
         Scanner kbd = new Scanner(System.in);
         int RoomType = 0;
         do {
