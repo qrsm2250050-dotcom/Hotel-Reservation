@@ -72,17 +72,7 @@ public class Main {
                             break;
                     }
                     double amount = days * unitPrice;
-                    double tendered = 0;
-                    do {
-                        System.out.println("Input Final Payment Amount ("+ unitPrice + " * " + days + " = " + amount + "): ");
-                        tendered = Double.parseDouble(kbd.nextLine());
-                        if (amount > tendered) {
-                            System.out.println("Not Enough Paid.");
-                        }
-                    } while (amount > tendered);
-                    double change = tendered - amount;
-                    System.out.println("Payment Successful");
-                    System.out.println("Change: " + change);
+                    payment(amount);
                     System.out.println("Update Status Room " + data[0].charAt(0) + data[1] + " is now set to Occupied by " + name + " for " + days + "day(s)");
                 }
                 case 4 -> {
