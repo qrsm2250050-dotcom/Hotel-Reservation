@@ -406,8 +406,8 @@ public class Main {
                 do {
                     suite[Integer.parseInt(data[1])][slot] = "Occupied";
                     slot++;
-                } while (slot < days);
-                data[2] = String.valueOf(Integer.parseInt(data[2]) + 1);
+                }while(slot < days);
+                data [2] = String.valueOf(Integer.parseInt(data[2]) + 1);
                 break;
             default:
                 System.out.println("Sorry, there are no available rooms for your chosen length of stay and room type");
