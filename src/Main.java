@@ -244,6 +244,7 @@ public class Main {
             int startnewlocation = 0;
             boolean newstreak = false;
             for (int j = 0; j < checker[i].length; j++) { //loop through each day, checks each day in current room
+                System.out.println("Begin if check");
                 if (checker[i][j].equals("Available")) { //checks if room is available in this particular day
                     streak++;
                     System.out.println("Streak added");
