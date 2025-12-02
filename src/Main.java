@@ -269,8 +269,12 @@ public class Main {
 
     static String[] walkIn(String[][] standard, String[][] deluxe, String[][] suite) {
         Scanner kbd = new Scanner(System.in);
-        System.out.print("Input Room Type (1. Standard, 2. Deluxe, 3. Suite): ");
-        int RoomType = Integer.parseInt(kbd.nextLine());
+        int RoomType = 0;
+        do {
+            System.out.print("Input Room Type (1. Standard, 2. Deluxe, 3. Suite): ");
+            RoomType = Integer.parseInt(kbd.nextLine());
+            if (RoomType < 1 || RoomType > 3) {System.out.println("Invalid. Please enter 1, 2, or 3 only.");}
+        }while(RoomType > 3 || RoomType < 1);
         double unitPrice = 0;
         String WordRoomType = "";
         String[] data = new String[5];
