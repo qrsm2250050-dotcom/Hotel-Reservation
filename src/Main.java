@@ -354,9 +354,6 @@ public class Main {
         String ChosenRoom = "";
         for (int i = 0; i < checker.length; i++) { //loop through each room, checks each room
             int streak = 0;
-            int streaknewval = 0;
-            int startnewlocation = 0;
-            boolean newstreak = false;
             for (int j = 0; j < checker[i].length; j++) { //loop through each day, checks each day in current room
                 System.out.println("Begin if check");
                 if (checker[i][j].equals("Available")) { //checks if room is available in this particular day
