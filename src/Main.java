@@ -384,7 +384,7 @@ public class Main {
         int unitPrice = 0;
         int slot = 0;
         //data 0 is type 1 is number 2 is duration
-        switch (data[0].charAt(0)) {
+        switch (data[0].charAt(0)){
             case 'T'://standard
                 unitPrice = 2500;
                 do {
