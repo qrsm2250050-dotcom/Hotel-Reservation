@@ -36,7 +36,7 @@ public class Main {
                     newReservation();
                 }
                 case 3 -> {
-                    walkIn3();
+                    walkIn1();
                 }
                 case 4 -> {
                     checkOut();
