@@ -266,6 +266,59 @@ public class Main {
         System.out.println("Update Status: Room " + fullRoomName + " is now set to 'Booked' by " + guest + ".");
         System.out.println();
     }
+    static void walkIn1() {
+        String[] data = new String[5];
+        System.out.print("Input Guest Name:");
+        String name = kbd.nextLine();
+        data = walkIn2(standard, deluxe, suite);
+        int days = Integer.parseInt(data[2]);
+        int type = 0;
+        int unitPrice = 0;
+        int slot = 0;
+        //data 0 is type 1 is number 2 is duration
+        switch (data[0].charAt(0)){
+            case 'S'://standard
+                System.out.println("Standard room");
+                unitPrice = 2500;
+                do {
+                    standard[Integer.parseInt(data[1])][slot] = "Occupied";
+                    slot++;
+                }while(slot < days);
+                data [2] = String.valueOf(Integer.parseInt(data[2]) + 1);
+                break;
+            case 'D'://deluxe
+                unitPrice = 4000;
+                do {
+                    deluxe[Integer.parseInt(data[1])][slot] = "Occupied";
+                    slot++;
+                }while(slot < days);
+                data [2] = String.valueOf(Integer.parseInt(data[2]) + 1);
+                break;
+            case 'T'://suite
+                unitPrice = 8000;
+                do {
+                    suite[Integer.parseInt(data[1])][slot] = "Occupied";
+                    slot++;
+                }while(slot < days);
+                data [2] = String.valueOf(Integer.parseInt(data[2]) + 1);
+                break;
+            default:
+                System.out.println("Sorry, there are no available rooms for your chosen length of stay and room type");
+                break;
+        }
+        double amount = days * unitPrice;
+        double tendered;
+        do{
+            System.out.println("Input Payment, Room Only" + unitPrice + " * " + days + " = " + amount);
+            tendered = Double.parseDouble(kbd.nextLine());
+            if (tendered < amount){
+                System.out.println("Invalid Input");
+            }
+        }while(tendered < amount);
+        double change = tendered - amount;
+        System.out.println("Payment Successful");
+        int roomnum = 101 + Integer.parseInt(data[1]);
+        System.out.println("Update Status Room " + data[0].charAt(0) + roomnum + " is now set to Occupied by " + name + " for " + days + "day(s)");
 
     static String[] walkIn(String[][] standard, String[][] deluxe, String[][] suite) {
         Scanner kbd = new Scanner(System.in);
