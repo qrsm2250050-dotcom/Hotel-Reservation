@@ -337,6 +337,8 @@ public class Main {
                 ChosenRoom = walkIn2(suite, unitPrice, WordRoomType);
                 roominfo = ChosenRoom.split("#");
                 data[0] = "Suite";
+                data[1] = roominfo[0];
+                data[2] = roominfo[1];
                 return data;
             default:
                 System.out.println("Something went wrong"); //TEMP, ALSO REMEMBER TO ADD THE ERROR LOOP
