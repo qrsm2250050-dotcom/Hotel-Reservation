@@ -60,8 +60,14 @@ public class Main {
     //check room availability
     static void checkRoomAvailability(Scanner kbd, String[][] standard, String[][] deluxe, String[][] suite) {
 
-        System.out.print("Input Room Type: (1. Standard, 2. Deluxe, 3. Suite): ");
-        int type = Integer.parseInt(kbd.nextLine());
+        int type = 0;
+        while(type<1||type>3){
+            System.out.print("Input Room Type: (1. Standard, 2. Deluxe, 3. Suite): ");
+            type=Integer.parseInt(kbd.nextLine());
+            if (type<1||type>3){
+                System.out.println("Invalid. Please enter 1, 2, or 3 only.");
+            }
+        }
         System.out.println();
         System.out.println("Room Availability Status");
         char room; //declaration of variables
