@@ -307,7 +307,7 @@ public class Main {
         System.out.println();
     }
 
-    static String[] walkIn() {
+    static String[] walkIn(String[][] standard, String[][] deluxe, String[][] suite) {
         Scanner kbd = new Scanner(System.in);
         System.out.print("Input Guest Name (Walk-In): "); //ok so the code asks to take a name but at no point do we need to actually output the name thank god
         String GuestName = kbd.nextLine();
