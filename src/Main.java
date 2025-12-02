@@ -207,7 +207,6 @@ public class Main {
                 roominfo= ChosenRoom.split("#");
                 data [1] = roominfo[0];
                 data [2] = roominfo[1];
-                data [3] = roominfo[2];
                 return data;
             case 2:
                 WordRoomType = "Deluxe";
