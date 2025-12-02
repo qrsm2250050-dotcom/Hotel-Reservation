@@ -66,11 +66,16 @@ public class Main {
                         case 'S'://suite
                             unitPrice = 8000;
                             do {
-                                suite[Integer.parseInt(data[1])][Integer.parseInt(data[2])] = "Occupied";
-                                data[3] = String.valueOf(Integer.parseInt(data[3]) - 1);
-                                data[2] = String.valueOf(Integer.parseInt(data[2]) + 1);
-                                break;
-                            }while(Integer.parseInt(data[3]) > 0);
+                                suite[Integer.parseInt(data[1])][slot] = "Occupied";
+                                slot++;
+                            }while(slot < days);
+                            data [2] = String.valueOf(Integer.parseInt(data[2]) + 1);
+                            System.out.println("Stay done, assigning cleanup day");
+                            standard[Integer.parseInt(data[1])][days] = "Cleanup Day";
+                            break;
+                        default:
+                            System.out.println("Sorry, there are no available rooms for your chosen length of stay and room type");
+                            break;
                     }
                     double amount = days * unitPrice;
                     double tendered = 0;
