@@ -82,7 +82,7 @@ public class Main {
                     do {
                         System.out.println("Input Final Payment Amount ("+ unitPrice + " * " + days + " = " + amount + "): ");
                         tendered = Double.parseDouble(kbd.nextLine());
-                        if (amount < tendered) {
+                        if (amount > tendered) {
                             System.out.println("Not Enough Paid.");
                         }
                     } while (amount < tendered);
