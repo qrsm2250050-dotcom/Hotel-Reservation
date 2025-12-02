@@ -206,7 +206,6 @@ public class Main {
                 roominfo= ChosenRoom.split("#");
                 data [1] = roominfo[0];
                 data [2] = roominfo[1];
-                data [3] = roominfo[2];
                 data [0] = "Suite";
                 return data;
             default:
