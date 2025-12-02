@@ -396,7 +396,7 @@ public class Main {
         do{
             System.out.println("Input Payment, Room Only" + unitPrice + " * " + days + " = " + amount);
             tendered = Double.parseDouble(kbd.nextLine());
-            if (tendered != amount){
+            if (tendered < amount){
                 System.out.println("Please Pay Exact");
             }
         }while(tendered != amount);
