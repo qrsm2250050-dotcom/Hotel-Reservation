@@ -367,7 +367,7 @@ public class Main {
         return data;
     }
 
-    static String walkIn2(String[][] checker, double unitPrice, String WordRoomType) {
+    static String walkIn3(String[][] checker, double unitPrice, String WordRoomType) {
         Scanner kbd = new Scanner(System.in);
         System.out.print("Input Nights Booked: ");
         int days = 0;
