@@ -482,10 +482,10 @@ public class Main {
         do {
             System.out.println("Input Final Payment Amount: ");
             tendered = Double.parseDouble(kbd.nextLine());
-            if (amount < tendered) {
+            if (amount > tendered) {
                 System.out.println("Payment failed! Amount tendered less than required amount to be paid.");
             }
-        } while (amount < tendered);
+        } while (amount > tendered);
         System.out.println("Payment: ₱" + tendered + " received.");
         double change = tendered - amount;
         System.out.println("Change Calculation: ₱" + tendered + " - ₱" + amount + " = ₱" + change);
@@ -504,13 +504,13 @@ public class Main {
             System.out.println("Input Payment (Room Only, ₱" + unitPrice + " * " + day + "): ");
             tendered = Double.parseDouble(kbd.nextLine());
             double change = tendered - amount;
-            if (amount < tendered) {
+            if (amount > tendered) {
                 System.out.println("Payment failed! Amount tendered less than required amount to pay.");
             } else {
                 System.out.println("Payment Successful!");
                 System.out.println("Change Calculation: ₱" + tendered + " - ₱" + amount + " = ₱" + change);
             }
-        } while (amount < tendered);
+        } while (amount > tendered);
     }
 
     // change calculation for general use
