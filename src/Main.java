@@ -34,6 +34,8 @@ public class Main {
                 }
                 case 3 -> {
                     String[] data = new String[5];
+                    System.out.print("Input Guest Name: main");
+                    String name = kbd.nextLine();
                     data = walkIn(standard, deluxe, suite);
                     int days = Integer.parseInt(data [3]);
                     int type = 0;
