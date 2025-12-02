@@ -21,6 +21,9 @@ public class Main {
         initializeRooms(standard);
         initializeRooms(deluxe);
         initializeRooms(suite);
+        initializeRooms(standnamdur);
+        initializeRooms(deluxnamdur);
+        initializeRooms(suitenamdur);
 
         System.out.println("Welcome to the Grand Hotel System");
         while (true) {
@@ -416,12 +419,9 @@ public class Main {
             }
         } while (validation > 4);
         System.out.print("Days Checked In : ");
-        do {
-            roomDays = Integer.parseInt(kbd.nextLine());
-            if (roomDays > 10) {
-                System.out.println("Invalid days checked in, please try again.");
-            }
-        } while (roomDays > 10);
+
+        roomDays = daystayedcounter(roomPrint);
+
         //Call method, and split returned array into subtotal, tax, total, and room number
         double[] billPrint = billCalc(roomPrint, roomDays);
         double stotal = billPrint[0];
@@ -517,5 +517,40 @@ public class Main {
     static double payment(double amount, double tendered) {
         double change = tendered - amount;
         return change;
+    }
+    static int daystayedcounter(String roomtype){
+        String savnam = "";
+        int i = 0;
+        int counter = 0;
+        switch(roomtype.charAt(0)) {
+            case 'S' :
+            do {
+                i++;
+            } while (standnamdur[0][i] == "Available");
+            savnam = standnamdur[0][i];
+            do {
+                counter++;
+            } while (savnam == standnamdur[0][i]);
+            break;
+            case 'D' :
+                do {
+                    i++;
+                } while (deluxnamdur[0][i] == "Available");
+                savnam = deluxnamdur[0][i];
+                do {
+                    counter++;
+                } while (savnam == standnamdur[0][i]);
+                break;
+            case 'T' :
+                do {
+                    i++;
+                } while (suitenamdur[0][i] == "Available");
+                savnam = suitenamdur[0][i];
+                do {
+                    counter++;
+                } while (savnam == suitenamdur[0][i]);
+                break;
+        }
+        return counter;
     }
 }
