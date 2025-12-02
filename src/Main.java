@@ -202,15 +202,15 @@ public class Main {
         System.out.println("\nProcessing Reservation...");
 
         int assignedRoomIndex = -1;
-        int startDay = -1; // Track which day the reservation starts
+        int startDay = -1;
 
-        // Find available room and determine start day
+
         for (int i = 0; i < selectedArray.length; i++) {
-            // Check from day 1 to find earliest consecutive available days
+
             for (int start = 0; start <= 10 - nights; start++) {
                 boolean free = true;
 
-                // Check if room is available for the next 'nights' days starting from 'start'
+
                 for (int d = 0; d < nights; d++) {
                     if (!selectedArray[i][start + d].equals("Available")) {
                         free = false;
@@ -220,7 +220,7 @@ public class Main {
 
                 if (free) {
                     assignedRoomIndex = i;
-                    startDay = start + 1; // Convert to 1-based day number (Day 1, Day 2, etc.)
+                    startDay = start + 1;
 
                     // Print the dates
                     for (int dayNum = 1; dayNum <= nights; dayNum++) {
