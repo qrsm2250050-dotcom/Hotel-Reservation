@@ -336,7 +336,7 @@ public class Main {
                 System.out.println("Sorry, there are no available rooms for your chosen length of stay and room type");
                 break;
         }
-        payment(Days, UnitPrice);
+        paymentWalk(Days, UnitPrice);
     }
 
     static String[] walkIn2(String[][] standard, String[][] deluxe, String[][] suite) {
@@ -441,8 +441,8 @@ public class Main {
                 System.out.println("Invalid room number, please try again.");
             }
         } while (validation > 4);
-        String guestName = guestnamechecker(roomPrint);
-        roomDays = DayStayedCounter(roomPrint);
+        String guestName = guestNameChecker(roomPrint);
+        roomDays = dayStayedCounter(roomPrint);
         //Call method, and split returned array into subtotal, tax, total, and room number
         double[] billPrint = billCalc(roomPrint, roomDays);
         double stotal = billPrint[0];
@@ -454,7 +454,7 @@ public class Main {
                 "Service Fee : ₱250 \n" +
                 "Taxes : " + taxCost + "\n" +
                 "Total Amount Due : " + amount);
-        double[] paymentCalc = payment(amount);
+        double[] paymentCalc = paymentBill(amount);
         double tendered = paymentCalc[1];
         double change = paymentCalc[0];
         System.out.println("=== Final Bill === \n" +
@@ -500,7 +500,7 @@ public class Main {
     }
 
     // payment system for bill checkout
-    static double[] payment(double amount) {
+    static double[] paymentBill(double amount) {
         //Turned into array so I can get both payment and change
         Scanner kbd = new Scanner(System.in);
         double tendered;
@@ -521,7 +521,7 @@ public class Main {
     }
 
     // payment system for walk-in
-    static void payment(int day, double unitPrice) {
+    static void paymentWalk(int day, double unitPrice) {
         Scanner kbd = new Scanner(System.in);
         double tendered;
         double amount = unitPrice * day;
@@ -539,11 +539,8 @@ public class Main {
     }
 
     // change calculation for general use
-    static double payment(double amount, double tendered) {
-        double change = tendered - amount;
-        return change;
-    }
-    static int DayStayedCounter(String RoomType){
+
+    static int dayStayedCounter(String RoomType){
         String RoomNum = RoomType.substring(1);
         int RoomnumInt = Integer.parseInt(RoomNum) - 101;
         String SavNam = "";
@@ -618,7 +615,7 @@ public class Main {
         return Counter;
     }
 
-    static String guestnamechecker(String roomNm) {
+    static String guestNameChecker(String roomNm) {
         String roomnum = roomNm.substring(1);
         int roomnumInt = Integer.parseInt(roomnum) - 101;
         String savnam = "";
