@@ -191,8 +191,6 @@ public class Main {
     }
     static String[] walkIn(String[][] standard, String[][] deluxe, String[][] suite) {
         Scanner kbd = new Scanner(System.in);
-        System.out.println("Input Guest Name (Walk-In): ");//ok so the code asks to take a name but at no point do we need to actually output the name thank god
-        String GuestName = kbd.nextLine();
         System.out.println("Input Room Type (1. Standard, 2. Deluxe, 3. Suite): ");
         int RoomType = Integer.parseInt(kbd.nextLine());
         double unitPrice = 0;
