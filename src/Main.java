@@ -549,7 +549,7 @@ public class Main {
         int RoomnumInt = Integer.parseInt(RoomNum) - 101;
         String SavNam = "";
         int i = -1;
-        int counter = 0;
+        int Counter = 0;
         switch(RoomType.charAt(0)) {
             case 'S' :
             do {
@@ -565,7 +565,7 @@ public class Main {
             }
             do {
                 i++;
-                counter++;
+                Counter++;
                 standnamdur[RoomnumInt][i-1] = "Available";
                 standard[RoomnumInt][i-1] = "Available";
             } while (SavNam == standnamdur[RoomnumInt][i]);
@@ -584,7 +584,7 @@ public class Main {
                 }
                 do {
                     i++;
-                    counter++;
+                    Counter++;
                     deluxnamdur[RoomnumInt][i-1] = "Available";
                     deluxe[RoomnumInt][i-1] = "Available";
                 } while (SavNam == deluxnamdur[RoomnumInt][i]);
@@ -604,16 +604,16 @@ public class Main {
                 }
                 do {
                     i++;
-                    counter++;
+                    Counter++;
                     suitenamdur[RoomnumInt][i-1] = "Available";
                     suite[RoomnumInt][i-1] = "Available";
                 } while (SavNam == suitenamdur[RoomnumInt][i]);
                 break;
         }
-        return counter;
+        return Counter;
     }
 
-    static String GuestNameChecker(String roomNm) {
+    static String guestnamechecker(String roomNm) {
         String roomnum = roomNm.substring(1);
         int roomnumInt = Integer.parseInt(roomnum) - 101;
         String savnam = "";
