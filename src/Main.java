@@ -240,7 +240,6 @@ public class Main {
                     //starts checking next room with the break
                 }
             }
-
         }
         System.out.println("NO AVAILABLE ROOMS");
         return "0#0#0";
