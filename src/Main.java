@@ -263,9 +263,9 @@ public class Main {
 
     static String[] walkIn() {
         Scanner kbd = new Scanner(System.in);
-        System.out.println("Input Guest Name (Walk-In): ");//ok so the code asks to take a name but at no point do we need to actually output the name thank god
+        System.out.print("Input Guest Name (Walk-In): "); //ok so the code asks to take a name but at no point do we need to actually output the name thank god
         String GuestName = kbd.nextLine();
-        System.out.println("Input Room Type (1. Standard, 2. Deluxe, 3. Suite): ");
+        System.out.print("Input Room Type (1. Standard, 2. Deluxe, 3. Suite): ");
         int RoomType = Integer.parseInt(kbd.nextLine());
         double unitPrice = 0;
         String WordRoomType = "";
@@ -273,7 +273,7 @@ public class Main {
         String ChosenRoom = "";
         String typenumd = "";
         String[] roominfo;
-        switch (RoomType) {//set roomprice based on type already
+        switch (RoomType) { //set roomprice based on type already
             case 1:
                 WordRoomType = "Standard";
                 ChosenRoom = walkIn2(standard, unitPrice, WordRoomType);
@@ -301,7 +301,7 @@ public class Main {
 
     static String walkIn2(String[][] checker, double unitPrice, String WordRoomType) {
         Scanner kbd = new Scanner(System.in);
-        System.out.println("Input Nights Booked: ");
+        System.out.print("Input Nights Booked: ");
         int days = Integer.parseInt(kbd.nextLine());
         boolean terminate = false;
         System.out.println("Processing Walk-in Check-In... Checking for available " + WordRoomType + " rooms");
