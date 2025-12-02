@@ -306,8 +306,7 @@ public class Main {
                 System.out.println("Sorry, there are no available rooms for your chosen length of stay and room type");
                 break;
         }
-        double amount = days * unitPrice;
-        payment (amount,unitPrice,days);
+        payment(days,unitPrice);
     }
     static String[] walkIn2(String[][] standard, String[][] deluxe, String[][] suite) {
         Scanner kbd = new Scanner(System.in);
@@ -492,9 +491,10 @@ public class Main {
     }
 
     // payment system for walk-in
-    static void payment(double amount, int day, double unitPrice) {
+    static void payment(int day, double unitPrice) {
         Scanner kbd = new Scanner(System.in);
         double tendered;
+        double amount = unitPrice * day;
         do {
             System.out.println("Input Payment (Room Only, ₱" + unitPrice + " * " + day + "): ");
             tendered = Double.parseDouble(kbd.nextLine());
