@@ -321,6 +321,7 @@ public class Main {
         int days = 0;
         do {
             days = Integer.parseInt(kbd.nextLine());
+            if (days < 1 || days > 10) {System.out.println("Please Input from 1-10 days");}
         }while (days <= 0 || days > 10);
         boolean terminate = false;
         System.out.println("Processing Walk-in Check-In... Checking for available " + WordRoomType + " rooms");
