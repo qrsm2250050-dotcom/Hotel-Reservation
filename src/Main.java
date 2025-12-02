@@ -519,6 +519,8 @@ public class Main {
         return change;
     }
     static int daystayedcounter(String roomtype){
+        String roomnum = roomtype.substring(1);
+        int roomnumInt = Integer.parseInt(roomnum) - 101;
         String savnam = "";
         int i = 0;
         int counter = 0;
@@ -526,32 +528,32 @@ public class Main {
             case 'S' :
             do {
                 i++;
-            } while (standnamdur[0][i] == "Available");
-            savnam = standnamdur[0][i];
+            } while (standnamdur[roomnumInt][i] == "Available");
+            savnam = standnamdur[roomnumInt][i];
             do {
                 counter++;
-                standnamdur[0][i-1] = "Available";
-            } while (savnam == standnamdur[0][i]);
+                standnamdur[roomnumInt][i-1] = "Available";
+            } while (savnam == standnamdur[roomnumInt][i]);
             break;
             case 'D' :
                 do {
                     i++;
-                } while (deluxnamdur[0][i] == "Available");
-                savnam = deluxnamdur[0][i];
+                } while (deluxnamdur[roomnumInt][i] == "Available");
+                savnam = deluxnamdur[roomnumInt][i];
                 do {
                     counter++;
-                    deluxnamdur[0][i-1] = "Available";
-                } while (savnam == deluxnamdur[0][i]);
+                    deluxnamdur[roomnumInt][i-1] = "Available";
+                } while (savnam == deluxnamdur[roomnumInt][i]);
                 break;
             case 'T' :
                 do {
                     i++;
-                } while (suitenamdur[0][i] == "Available");
-                savnam = suitenamdur[0][i];
+                } while (suitenamdur[roomnumInt][i] == "Available");
+                savnam = suitenamdur[roomnumInt][i];
                 do {
                     counter++;
-                    suitenamdur[0][i-1] = "Available";
-                } while (savnam == suitenamdur[0][i]);
+                    suitenamdur[roomnumInt][i-1] = "Available";
+                } while (savnam == suitenamdur[roomnumInt][i]);
                 break;
         }
         return counter;
