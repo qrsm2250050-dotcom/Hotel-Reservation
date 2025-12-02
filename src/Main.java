@@ -613,7 +613,7 @@ public class Main {
         return counter;
     }
 
-    static String guestnamechecker(String roomNm) {
+    static String GuestNameChecker(String roomNm) {
         String roomnum = roomNm.substring(1);
         int roomnumInt = Integer.parseInt(roomnum) - 101;
         String savnam = "";
