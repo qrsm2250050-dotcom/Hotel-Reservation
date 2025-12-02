@@ -530,6 +530,7 @@ public class Main {
             savnam = standnamdur[0][i];
             do {
                 counter++;
+                standnamdur[0][i-1] = "Available";
             } while (savnam == standnamdur[0][i]);
             break;
             case 'D' :
@@ -539,7 +540,8 @@ public class Main {
                 savnam = deluxnamdur[0][i];
                 do {
                     counter++;
-                } while (savnam == standnamdur[0][i]);
+                    deluxnamdur[0][i-1] = "Available";
+                } while (savnam == deluxnamdur[0][i]);
                 break;
             case 'T' :
                 do {
@@ -548,6 +550,7 @@ public class Main {
                 savnam = suitenamdur[0][i];
                 do {
                     counter++;
+                    suitenamdur[0][i-1] = "Available";
                 } while (savnam == suitenamdur[0][i]);
                 break;
         }
