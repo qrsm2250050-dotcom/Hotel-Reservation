@@ -307,19 +307,7 @@ public class Main {
                 break;
         }
         double amount = days * unitPrice;
-        double tendered;
-        do{
-            System.out.println("Input Payment, Room Only" + unitPrice + " * " + days + " = " + amount);
-            tendered = Double.parseDouble(kbd.nextLine());
-            if (tendered < amount){
-                System.out.println("Invalid Input");
-            }
-        }while(tendered < amount);
-        double change = tendered - amount;
-        System.out.println("Payment Successful");
-        int roomnum = 101 + Integer.parseInt(data[1]);
-        System.out.println("Update Status Room " + data[0].charAt(0) + roomnum + " is now set to Occupied by " + name + " for " + days + "day(s)");
-
+        payment (amount,unitPrice,days);
     }
     static String[] walkIn2(String[][] standard, String[][] deluxe, String[][] suite) {
         Scanner kbd = new Scanner(System.in);
