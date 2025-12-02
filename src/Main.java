@@ -381,8 +381,50 @@ public class Main {
         }
         return "0#0#0";
     }
-
-    static void checkOut() {
+    static void walkIn3() {
+        String[] data = new String[5];
+        System.out.print("Input Guest Name: main");
+        String name = kbd.nextLine();
+        data = walkIn(standard, deluxe, suite);
+        int days = Integer.parseInt(data[2]);
+        int type = 0;
+        int unitPrice = 0;
+        int slot = 0;
+        //data 0 is type 1 is number 2 is duration
+        switch (data[0].charAt(0)) {
+            case 'T'://standard
+                unitPrice = 2500;
+                do {
+                    standard[Integer.parseInt(data[1])][slot] = "Occupied";
+                    slot++;
+                } while (slot < days);
+                data[2] = String.valueOf(Integer.parseInt(data[2]) + 1);
+                break;
+            case 'D'://deluxe
+                unitPrice = 4000;
+                do {
+                    deluxe[Integer.parseInt(data[1])][slot] = "Occupied";
+                    slot++;
+                } while (slot < days);
+                data[2] = String.valueOf(Integer.parseInt(data[2]) + 1);
+                break;
+            case 'S'://suite
+                unitPrice = 8000;
+                do {
+                    suite[Integer.parseInt(data[1])][slot] = "Occupied";
+                    slot++;
+                } while (slot < days);
+                data[2] = String.valueOf(Integer.parseInt(data[2]) + 1);
+                break;
+            default:
+                System.out.println("Sorry, there are no available rooms for your chosen length of stay and room type");
+                break;
+        }
+        double amount = days * unitPrice;
+        payment(amount);
+        System.out.println("Update Status Room " + data[0].charAt(0) + data[1] + " is now set to Occupied by " + name + " for " + days + "day(s)");
+        }
+        static void checkOut() {
         // Print Bill
         // Check Room Number
         // Check If Paid
