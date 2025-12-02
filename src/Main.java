@@ -398,8 +398,8 @@ public class Main {
                 do {
                     deluxe[Integer.parseInt(data[1])][slot] = "Occupied";
                     slot++;
-                } while (slot < days);
-                data[2] = String.valueOf(Integer.parseInt(data[2]) + 1);
+                }while(slot < days);
+                data [2] = String.valueOf(Integer.parseInt(data[2]) + 1);
                 break;
             case 'S'://suite
                 unitPrice = 8000;
