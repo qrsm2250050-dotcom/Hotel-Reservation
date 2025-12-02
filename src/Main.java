@@ -245,14 +245,12 @@ public class Main {
             boolean newstreak = false;
             for (int j = 0; j < checker[i].length; j++) { //loop through each day, checks each day in current room
                 if (checker[i][j].equals("Available")) { //checks if room is available in this particular day
-                    if (newstreak) {
-                        startnewlocation = j;
-                    }
-                    newstreak = false;
-                    streaknewval++;
-                    if (streaknewval >= days) {
-                        //1st one is room number, 2nd one is which day you start, 3rd one is for how many days
-                        ChosenRoom = String.valueOf(i) + "#" + String.valueOf(startnewlocation) + "#" + days;
+                    streak++;
+                    System.out.println("Streak added");
+                    if (streak >= days) {
+                        System.out.println("Enough Days found");
+                        //0st one is room number 1nd one is for how many days
+                        ChosenRoom = String.valueOf(i) + "#" + String.valueOf(days);
                         return ChosenRoom;
                     }
                 }
