@@ -328,7 +328,6 @@ public class Main {
         String WordRoomType = "";
         String[] data = new String[5];
         String ChosenRoom = "";
-        String typenumd = "";
         String[] roominfo;
         switch (RoomType) { //set roomprice based on type already
             case 1:
