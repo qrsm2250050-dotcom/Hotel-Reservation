@@ -354,7 +354,7 @@ public class Main {
                 return data;
             case 3:
                 WordRoomType = "Suite";
-                ChosenRoom = walkIn2(suite, unitPrice, WordRoomType);
+                ChosenRoom = walkIn3(suite, unitPrice, WordRoomType);
                 roominfo = ChosenRoom.split("#");
                 data[0] = "Tuite";
                 data[1] = roominfo[0];
