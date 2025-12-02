@@ -281,27 +281,27 @@ public class Main {
         //data 0 is type 1 is number 2 is duration
         switch (data[0].charAt(0)){
             case 'S'://standard
-                standnamdur [Integer.parseInt(data[1])][0] = name;
                 unitPrice = 2500;
                 do {
+                    standnamdur [Integer.parseInt(data[1])][slot] = name;
                     standard[Integer.parseInt(data[1])][slot] = "Occupied";
                     slot++;
                 }while(slot < days);
                 data [2] = String.valueOf(Integer.parseInt(data[2]) + 1);
                 break;
             case 'D'://deluxe
-                deluxnamdur [Integer.parseInt(data[1])][0] = name;
                 unitPrice = 4000;
                 do {
+                    deluxnamdur [Integer.parseInt(data[1])][slot] = name;
                     deluxe[Integer.parseInt(data[1])][slot] = "Occupied";
                     slot++;
                 }while(slot < days);
                 data [2] = String.valueOf(Integer.parseInt(data[2]) + 1);
                 break;
             case 'T'://suite
-                suite[Integer.parseInt(data[1])][0] = name;
                 unitPrice = 8000;
                 do {
+                    suitenamdur[Integer.parseInt(data[1])][slot] = name;
                     suite[Integer.parseInt(data[1])][slot] = "Occupied";
                     slot++;
                 }while(slot < days);
