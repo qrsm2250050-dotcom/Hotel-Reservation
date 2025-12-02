@@ -444,25 +444,19 @@ public class Main {
                 System.out.println("Invalid room number, please try again.");
             }
         } while (validation > 4);
-        System.out.println("Running guestname");
         String guestName = guestnamechecker(roomPrint);
-        System.out.println("Running roomdays");
         roomDays = DayStayedCounter(roomPrint);
         //Call method, and split returned array into subtotal, tax, total, and room number
-        System.out.println("Finished with the methods");
         double[] billPrint = billCalc(roomPrint, roomDays);
-        System.out.println("Finished with the methods");
         double stotal = billPrint[0];
         double taxCost = billPrint[1];
         double amount = billPrint[2];
-        int rmNum = (int) billPrint[3];
-        System.out.println("Values, assigned");
         //Call payment method, convert returned values into tendered and change
         System.out.println("=== Bill === \n" +
                 "Subtotal : " + stotal + "\n" +
                 "Service Fee : ₱250 \n" +
                 "Taxes : " + taxCost + "\n" +
-                "Total Amount Due : " + billPrint);
+                "Total Amount Due : " + amount);
         double[] paymentCalc = payment(amount);
         double tendered = paymentCalc[1];
         double change = paymentCalc[0];
@@ -477,10 +471,11 @@ public class Main {
         // Billing Calculations
         // Check Room Type and Days
         // Add Serv
-        int roomNum = Integer.parseInt(rPrt);
+        int roomNum = Integer.parseInt(rPrt.substring(1));
         char roomType = rPrt.toUpperCase().charAt(0);
         double subTot = 0.00;
         // Check room type and days, calc subTotal
+        System.out.println("Roomtype");
         switch (roomType) {
             case 'S':
                 subTot = 2500.00 * rDays;
@@ -494,10 +489,12 @@ public class Main {
             default:
         }
         //calc tax, then combine subtot with tax for final amount
+        System.out.println("Calcs");
         double taxBill = (subTot + 250.00) * 0.1;
         double fullBill = (subTot + 250.00) + taxBill;
         //compile double variables into array and return array
         double[] listBill = new double[4];
+        System.out.println("Assigns");
         listBill[0] = subTot;
         listBill[1] = taxBill;
         listBill[2] = fullBill;
