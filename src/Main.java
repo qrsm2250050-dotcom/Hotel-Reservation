@@ -318,7 +318,10 @@ public class Main {
     static String walkIn2(String[][] checker, double unitPrice, String WordRoomType) {
         Scanner kbd = new Scanner(System.in);
         System.out.print("Input Nights Booked: ");
-        int days = Integer.parseInt(kbd.nextLine());
+        int days = 0;
+        do {
+            days = Integer.parseInt(kbd.nextLine());
+        }while (days <= 0 || days > 10);
         boolean terminate = false;
         System.out.println("Processing Walk-in Check-In... Checking for available " + WordRoomType + " rooms");
         String ChosenRoom = "";
